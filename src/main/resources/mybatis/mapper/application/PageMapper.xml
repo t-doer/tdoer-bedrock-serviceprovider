@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tdoer.bedrock.serviceprovider.mapper.application.PageMapper">
+  <resultMap id="BaseResultMap" type="com.tdoer.bedrock.serviceprovider.eo.application.PageEO">
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="CODE" jdbcType="VARCHAR" property="code" />
+    <result column="URI" jdbcType="VARCHAR" property="uri" />
+    <result column="APPLICATION_ID" jdbcType="BIGINT" property="applicationId" />
+    <result column="CUSTOMIZED" jdbcType="CHAR" property="customized" />
+    <result column="ENABLED" jdbcType="CHAR" property="enabled" />
+    <result column="CREATED_BY" jdbcType="BIGINT" property="createdBy" />
+    <result column="CREATED_AT" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="UPDATED_BY" jdbcType="BIGINT" property="updatedBy" />
+    <result column="UPDATED_AT" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, NAME, CODE, URI, APPLICATION_ID, CUSTOMIZED, ENABLED, CREATED_BY, CREATED_AT, 
+    UPDATED_BY, UPDATED_AT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fw_page
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from fw_page
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="com.tdoer.bedrock.serviceprovider.eo.application.PageEO" useGeneratedKeys="true">
+    insert into fw_page (NAME, CODE, URI, 
+      APPLICATION_ID, CUSTOMIZED, ENABLED, 
+      CREATED_BY, CREATED_AT, UPDATED_BY, 
+      UPDATED_AT)
+    values (#{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{uri,jdbcType=VARCHAR}, 
+      #{applicationId,jdbcType=BIGINT}, #{customized,jdbcType=CHAR}, #{enabled,jdbcType=CHAR}, 
+      #{createdBy,jdbcType=BIGINT}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=BIGINT}, 
+      #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="ID" keyProperty="id" parameterType="com.tdoer.bedrock.serviceprovider.eo.application.PageEO" useGeneratedKeys="true">
+    insert into fw_page
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+      <if test="uri != null">
+        URI,
+      </if>
+      <if test="applicationId != null">
+        APPLICATION_ID,
+      </if>
+      <if test="customized != null">
+        CUSTOMIZED,
+      </if>
+      <if test="enabled != null">
+        ENABLED,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="createdAt != null">
+        CREATED_AT,
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY,
+      </if>
+      <if test="updatedAt != null">
+        UPDATED_AT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="uri != null">
+        #{uri,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationId != null">
+        #{applicationId,jdbcType=BIGINT},
+      </if>
+      <if test="customized != null">
+        #{customized,jdbcType=CHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=CHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tdoer.bedrock.serviceprovider.eo.application.PageEO">
+    update fw_page
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        CODE = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="uri != null">
+        URI = #{uri,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationId != null">
+        APPLICATION_ID = #{applicationId,jdbcType=BIGINT},
+      </if>
+      <if test="customized != null">
+        CUSTOMIZED = #{customized,jdbcType=CHAR},
+      </if>
+      <if test="enabled != null">
+        ENABLED = #{enabled,jdbcType=CHAR},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="createdAt != null">
+        CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY = #{updatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="updatedAt != null">
+        UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tdoer.bedrock.serviceprovider.eo.application.PageEO">
+    update fw_page
+    set NAME = #{name,jdbcType=VARCHAR},
+      CODE = #{code,jdbcType=VARCHAR},
+      URI = #{uri,jdbcType=VARCHAR},
+      APPLICATION_ID = #{applicationId,jdbcType=BIGINT},
+      CUSTOMIZED = #{customized,jdbcType=CHAR},
+      ENABLED = #{enabled,jdbcType=CHAR},
+      CREATED_BY = #{createdBy,jdbcType=BIGINT},
+      CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      UPDATED_BY = #{updatedBy,jdbcType=BIGINT},
+      UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
