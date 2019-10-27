@@ -1,15 +1,14 @@
 package com.tdoer.bedrock.serviceprovider.eo.product;
 
+import com.tdoer.bedrock.impl.definition.product.ClientApplicationDefinition;
 import java.util.Date;
 
-public class ClientApplicationEO {
+public class ClientApplicationEO extends ClientApplicationDefinition {
     private Long id;
 
     private Long clientId;
 
     private Long applicationId;
-
-    private Long tenantId;
 
     private String enabled;
 
@@ -43,14 +42,6 @@ public class ClientApplicationEO {
 
     public void setApplicationId(Long applicationId) {
         this.applicationId = applicationId;
-    }
-
-    public Long getTenantId() {
-        return tenantId;
-    }
-
-    public void setTenantId(Long tenantId) {
-        this.tenantId = tenantId;
     }
 
     public String getEnabled() {

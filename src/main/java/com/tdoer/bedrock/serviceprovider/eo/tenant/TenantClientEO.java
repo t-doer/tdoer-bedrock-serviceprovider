@@ -1,19 +1,16 @@
 package com.tdoer.bedrock.serviceprovider.eo.tenant;
 
+import com.tdoer.bedrock.impl.definition.tenant.TenantClientDefinition;
 import java.util.Date;
 
-public class TenantClientEO {
+public class TenantClientEO extends TenantClientDefinition {
     private Long id;
-
-    private Long tenantId;
 
     private Long productId;
 
     private Long clientId;
 
     private String secret;
-
-    private String hosts;
 
     private String enabled;
 
@@ -31,14 +28,6 @@ public class TenantClientEO {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getTenantId() {
-        return tenantId;
-    }
-
-    public void setTenantId(Long tenantId) {
-        this.tenantId = tenantId;
     }
 
     public Long getProductId() {
@@ -63,14 +52,6 @@ public class TenantClientEO {
 
     public void setSecret(String secret) {
         this.secret = secret == null ? null : secret.trim();
-    }
-
-    public String getHosts() {
-        return hosts;
-    }
-
-    public void setHosts(String hosts) {
-        this.hosts = hosts == null ? null : hosts.trim();
     }
 
     public String getEnabled() {

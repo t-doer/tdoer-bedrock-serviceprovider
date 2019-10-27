@@ -1,16 +1,9 @@
 package com.tdoer.bedrock.serviceprovider.eo.service;
 
+import com.tdoer.bedrock.impl.definition.service.ServiceMethodDefinition;
 import java.util.Date;
 
-public class ServiceMethodEO {
-    private Long id;
-
-    private String name;
-
-    private String method;
-
-    private String uri;
-
+public class ServiceMethodEO extends ServiceMethodDefinition {
     private Long serviceId;
 
     private String enabled;
@@ -24,38 +17,6 @@ public class ServiceMethodEO {
     private Long updatedBy;
 
     private Date updatedAt;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public String getMethod() {
-        return method;
-    }
-
-    public void setMethod(String method) {
-        this.method = method == null ? null : method.trim();
-    }
-
-    public String getUri() {
-        return uri;
-    }
-
-    public void setUri(String uri) {
-        this.uri = uri == null ? null : uri.trim();
-    }
 
     public Long getServiceId() {
         return serviceId;

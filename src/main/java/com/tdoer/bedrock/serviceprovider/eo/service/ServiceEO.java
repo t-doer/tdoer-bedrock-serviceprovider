@@ -1,21 +1,14 @@
 package com.tdoer.bedrock.serviceprovider.eo.service;
 
+import com.tdoer.bedrock.impl.definition.service.ServiceDefinition;
 import java.util.Date;
 
-public class ServiceEO {
+public class ServiceEO extends ServiceDefinition {
     private Long id;
-
-    private String name;
 
     private String code;
 
     private String type;
-
-    private String description;
-
-    private String version;
-
-    private String provider;
 
     private String enabled;
 
@@ -35,14 +28,6 @@ public class ServiceEO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
     public String getCode() {
         return code;
     }
@@ -57,30 +42,6 @@ public class ServiceEO {
 
     public void setType(String type) {
         this.type = type == null ? null : type.trim();
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version == null ? null : version.trim();
-    }
-
-    public String getProvider() {
-        return provider;
-    }
-
-    public void setProvider(String provider) {
-        this.provider = provider == null ? null : provider.trim();
     }
 
     public String getEnabled() {

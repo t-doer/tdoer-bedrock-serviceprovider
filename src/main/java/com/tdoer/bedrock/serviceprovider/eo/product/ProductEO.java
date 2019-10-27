@@ -1,17 +1,12 @@
 package com.tdoer.bedrock.serviceprovider.eo.product;
 
+import com.tdoer.bedrock.impl.definition.product.ProductDefinition;
 import java.util.Date;
 
-public class ProductEO {
+public class ProductEO extends ProductDefinition {
     private Long id;
 
-    private String name;
-
     private String code;
-
-    private String description;
-
-    private String languages;
 
     private String version;
 
@@ -33,36 +28,12 @@ public class ProductEO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
     public String getCode() {
         return code;
     }
 
     public void setCode(String code) {
         this.code = code == null ? null : code.trim();
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
-    }
-
-    public String getLanguages() {
-        return languages;
-    }
-
-    public void setLanguages(String languages) {
-        this.languages = languages == null ? null : languages.trim();
     }
 
     public String getVersion() {

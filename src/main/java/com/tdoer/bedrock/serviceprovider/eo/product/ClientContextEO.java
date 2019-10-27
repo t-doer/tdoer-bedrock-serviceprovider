@@ -1,21 +1,14 @@
 package com.tdoer.bedrock.serviceprovider.eo.product;
 
+import com.tdoer.bedrock.impl.definition.product.ClientContextDefinition;
 import java.util.Date;
 
-public class ClientContextEO {
+public class ClientContextEO extends ClientContextDefinition {
     private Long id;
 
     private Long clientId;
 
-    private String contextPath;
-
     private String entryAppCode;
-
-    private String entryNavItem;
-
-    private String entryLanguage;
-
-    private Long tenantId;
 
     private String enabled;
 
@@ -43,44 +36,12 @@ public class ClientContextEO {
         this.clientId = clientId;
     }
 
-    public String getContextPath() {
-        return contextPath;
-    }
-
-    public void setContextPath(String contextPath) {
-        this.contextPath = contextPath == null ? null : contextPath.trim();
-    }
-
     public String getEntryAppCode() {
         return entryAppCode;
     }
 
     public void setEntryAppCode(String entryAppCode) {
         this.entryAppCode = entryAppCode == null ? null : entryAppCode.trim();
-    }
-
-    public String getEntryNavItem() {
-        return entryNavItem;
-    }
-
-    public void setEntryNavItem(String entryNavItem) {
-        this.entryNavItem = entryNavItem == null ? null : entryNavItem.trim();
-    }
-
-    public String getEntryLanguage() {
-        return entryLanguage;
-    }
-
-    public void setEntryLanguage(String entryLanguage) {
-        this.entryLanguage = entryLanguage == null ? null : entryLanguage.trim();
-    }
-
-    public Long getTenantId() {
-        return tenantId;
-    }
-
-    public void setTenantId(Long tenantId) {
-        this.tenantId = tenantId;
     }
 
     public String getEnabled() {

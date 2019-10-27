@@ -1,18 +1,9 @@
 package com.tdoer.bedrock.serviceprovider.eo.context;
 
+import com.tdoer.bedrock.impl.definition.context.ContextRoleDefinition;
 import java.util.Date;
 
-public class ContextRoleEO {
-    private Long id;
-
-    private String name;
-
-    private String code;
-
-    private String contextPath;
-
-    private Long tenantId;
-
+public class ContextRoleEO extends ContextRoleDefinition {
     private String enabled;
 
     private Long createdBy;
@@ -22,46 +13,6 @@ public class ContextRoleEO {
     private Long updatedBy;
 
     private Date updatedAt;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code == null ? null : code.trim();
-    }
-
-    public String getContextPath() {
-        return contextPath;
-    }
-
-    public void setContextPath(String contextPath) {
-        this.contextPath = contextPath == null ? null : contextPath.trim();
-    }
-
-    public Long getTenantId() {
-        return tenantId;
-    }
-
-    public void setTenantId(Long tenantId) {
-        this.tenantId = tenantId;
-    }
 
     public String getEnabled() {
         return enabled;

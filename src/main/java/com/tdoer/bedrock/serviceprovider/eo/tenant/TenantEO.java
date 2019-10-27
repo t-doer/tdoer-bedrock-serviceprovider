@@ -1,15 +1,10 @@
 package com.tdoer.bedrock.serviceprovider.eo.tenant;
 
+import com.tdoer.bedrock.impl.definition.tenant.TenantDefinition;
 import java.util.Date;
 
-public class TenantEO {
-    private Long id;
-
+public class TenantEO extends TenantDefinition {
     private String guid;
-
-    private String name;
-
-    private String code;
 
     private String enabled;
 
@@ -21,36 +16,12 @@ public class TenantEO {
 
     private Date updatedAt;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getGuid() {
         return guid;
     }
 
     public void setGuid(String guid) {
         this.guid = guid == null ? null : guid.trim();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code == null ? null : code.trim();
     }
 
     public String getEnabled() {

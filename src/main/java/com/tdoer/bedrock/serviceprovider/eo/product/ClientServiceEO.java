@@ -1,15 +1,14 @@
 package com.tdoer.bedrock.serviceprovider.eo.product;
 
+import com.tdoer.bedrock.impl.definition.product.ClientServiceDefinition;
 import java.util.Date;
 
-public class ClientServiceEO {
+public class ClientServiceEO extends ClientServiceDefinition {
     private Long id;
 
     private Long clientId;
 
     private Long serviceId;
-
-    private Long tenantId;
 
     private Long createdBy;
 
@@ -41,14 +40,6 @@ public class ClientServiceEO {
 
     public void setServiceId(Long serviceId) {
         this.serviceId = serviceId;
-    }
-
-    public Long getTenantId() {
-        return tenantId;
-    }
-
-    public void setTenantId(Long tenantId) {
-        this.tenantId = tenantId;
     }
 
     public Long getCreatedBy() {

@@ -1,8 +1,9 @@
 package com.tdoer.bedrock.serviceprovider.eo.context;
 
+import com.tdoer.bedrock.impl.definition.context.ContextPublicMethodDefinition;
 import java.util.Date;
 
-public class ContextPublicMethodEO {
+public class ContextPublicMethodEO extends ContextPublicMethodDefinition {
     private Long id;
 
     private Long tenantId;

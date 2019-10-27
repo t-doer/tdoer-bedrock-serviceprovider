@@ -1,17 +1,12 @@
 package com.tdoer.bedrock.serviceprovider.eo.tenant;
 
+import com.tdoer.bedrock.impl.definition.tenant.TenantProductDefinition;
 import java.util.Date;
 
-public class TenantProductEO {
+public class TenantProductEO extends TenantProductDefinition {
     private Long id;
 
-    private Long tenantId;
-
     private Long productId;
-
-    private Date startDate;
-
-    private Date endDate;
 
     private String defaultLanguage;
 
@@ -33,36 +28,12 @@ public class TenantProductEO {
         this.id = id;
     }
 
-    public Long getTenantId() {
-        return tenantId;
-    }
-
-    public void setTenantId(Long tenantId) {
-        this.tenantId = tenantId;
-    }
-
     public Long getProductId() {
         return productId;
     }
 
     public void setProductId(Long productId) {
         this.productId = productId;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
     }
 
     public String getDefaultLanguage() {

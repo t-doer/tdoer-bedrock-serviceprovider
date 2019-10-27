@@ -1,8 +1,9 @@
 package com.tdoer.bedrock.serviceprovider.eo.product;
 
+import com.tdoer.bedrock.impl.definition.product.ClientTokenDefinition;
 import java.util.Date;
 
-public class ClientTokenEO {
+public class ClientTokenEO extends ClientTokenDefinition {
     private Long id;
 
     private Long clientId;
@@ -13,13 +14,7 @@ public class ClientTokenEO {
 
     private String webRedirectUri;
 
-    private Integer accessTokenValidity;
-
-    private Integer refreshTokenValidity;
-
     private String sessionPolicy;
-
-    private Long tenantId;
 
     private Long createdBy;
 
@@ -69,36 +64,12 @@ public class ClientTokenEO {
         this.webRedirectUri = webRedirectUri == null ? null : webRedirectUri.trim();
     }
 
-    public Integer getAccessTokenValidity() {
-        return accessTokenValidity;
-    }
-
-    public void setAccessTokenValidity(Integer accessTokenValidity) {
-        this.accessTokenValidity = accessTokenValidity;
-    }
-
-    public Integer getRefreshTokenValidity() {
-        return refreshTokenValidity;
-    }
-
-    public void setRefreshTokenValidity(Integer refreshTokenValidity) {
-        this.refreshTokenValidity = refreshTokenValidity;
-    }
-
     public String getSessionPolicy() {
         return sessionPolicy;
     }
 
     public void setSessionPolicy(String sessionPolicy) {
         this.sessionPolicy = sessionPolicy == null ? null : sessionPolicy.trim();
-    }
-
-    public Long getTenantId() {
-        return tenantId;
-    }
-
-    public void setTenantId(Long tenantId) {
-        this.tenantId = tenantId;
     }
 
     public Long getCreatedBy() {

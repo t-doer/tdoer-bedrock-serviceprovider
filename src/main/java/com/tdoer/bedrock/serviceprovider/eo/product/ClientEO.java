@@ -1,21 +1,14 @@
 package com.tdoer.bedrock.serviceprovider.eo.product;
 
+import com.tdoer.bedrock.impl.definition.product.ClientDefinition;
 import java.util.Date;
 
-public class ClientEO {
+public class ClientEO extends ClientDefinition {
     private Long id;
 
     private Long productId;
 
-    private String name;
-
     private String code;
-
-    private String category;
-
-    private String trusted;
-
-    private String scopes;
 
     private String roles;
 
@@ -45,44 +38,12 @@ public class ClientEO {
         this.productId = productId;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
     public String getCode() {
         return code;
     }
 
     public void setCode(String code) {
         this.code = code == null ? null : code.trim();
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category == null ? null : category.trim();
-    }
-
-    public String getTrusted() {
-        return trusted;
-    }
-
-    public void setTrusted(String trusted) {
-        this.trusted = trusted == null ? null : trusted.trim();
-    }
-
-    public String getScopes() {
-        return scopes;
-    }
-
-    public void setScopes(String scopes) {
-        this.scopes = scopes == null ? null : scopes.trim();
     }
 
     public String getRoles() {

@@ -1,8 +1,9 @@
 package com.tdoer.bedrock.serviceprovider.eo.context;
 
+import com.tdoer.bedrock.impl.definition.context.ContextRoleMethodDefinition;
 import java.util.Date;
 
-public class ContextRoleMethodEO {
+public class ContextRoleMethodEO extends ContextRoleMethodDefinition {
     private Long id;
 
     private Long roleId;

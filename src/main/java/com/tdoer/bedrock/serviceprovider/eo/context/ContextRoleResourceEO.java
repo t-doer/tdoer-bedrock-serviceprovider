@@ -1,8 +1,9 @@
 package com.tdoer.bedrock.serviceprovider.eo.context;
 
+import com.tdoer.bedrock.impl.definition.context.ContextRoleResourceDefinition;
 import java.util.Date;
 
-public class ContextRoleResourceEO {
+public class ContextRoleResourceEO extends ContextRoleResourceDefinition {
     private Long id;
 
     private Long roleId;

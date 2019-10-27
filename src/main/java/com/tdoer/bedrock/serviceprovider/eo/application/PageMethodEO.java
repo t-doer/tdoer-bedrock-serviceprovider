@@ -1,17 +1,12 @@
 package com.tdoer.bedrock.serviceprovider.eo.application;
 
+import com.tdoer.bedrock.impl.definition.application.PageMethodDefinition;
 import java.util.Date;
 
-public class PageMethodEO {
-    private Long id;
-
+public class PageMethodEO extends PageMethodDefinition {
     private Long applicationId;
 
-    private Long pageId;
-
     private Long serviceId;
-
-    private Long methodId;
 
     private Long createdBy;
 
@@ -21,14 +16,6 @@ public class PageMethodEO {
 
     private Date updatedAt;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Long getApplicationId() {
         return applicationId;
     }
@@ -37,28 +24,12 @@ public class PageMethodEO {
         this.applicationId = applicationId;
     }
 
-    public Long getPageId() {
-        return pageId;
-    }
-
-    public void setPageId(Long pageId) {
-        this.pageId = pageId;
-    }
-
     public Long getServiceId() {
         return serviceId;
     }
 
     public void setServiceId(Long serviceId) {
         this.serviceId = serviceId;
-    }
-
-    public Long getMethodId() {
-        return methodId;
-    }
-
-    public void setMethodId(Long methodId) {
-        this.methodId = methodId;
     }
 
     public Long getCreatedBy() {

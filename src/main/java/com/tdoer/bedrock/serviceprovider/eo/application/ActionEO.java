@@ -1,16 +1,9 @@
 package com.tdoer.bedrock.serviceprovider.eo.application;
 
+import com.tdoer.bedrock.impl.definition.application.ActionDefinition;
 import java.util.Date;
 
-public class ActionEO {
-    private Long id;
-
-    private String name;
-
-    private String code;
-
-    private Long pageId;
-
+public class ActionEO extends ActionDefinition {
     private Long applicationId;
 
     private String customized;
@@ -24,38 +17,6 @@ public class ActionEO {
     private Long updatedBy;
 
     private Date updatedAt;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code == null ? null : code.trim();
-    }
-
-    public Long getPageId() {
-        return pageId;
-    }
-
-    public void setPageId(Long pageId) {
-        this.pageId = pageId;
-    }
 
     public Long getApplicationId() {
         return applicationId;

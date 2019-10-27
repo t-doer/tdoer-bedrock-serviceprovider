@@ -1,19 +1,14 @@
 package com.tdoer.bedrock.serviceprovider.eo.context;
 
+import com.tdoer.bedrock.impl.definition.context.ContextTypeDefinition;
 import java.util.Date;
 
-public class ContextTypeEO {
+public class ContextTypeEO extends ContextTypeDefinition {
     private Long id;
-
-    private String code;
-
-    private String name;
 
     private Long parentType;
 
     private String contextPath;
-
-    private String category;
 
     private Long tenantId;
 
@@ -35,22 +30,6 @@ public class ContextTypeEO {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code == null ? null : code.trim();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
     public Long getParentType() {
         return parentType;
     }
@@ -65,14 +44,6 @@ public class ContextTypeEO {
 
     public void setContextPath(String contextPath) {
         this.contextPath = contextPath == null ? null : contextPath.trim();
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category == null ? null : category.trim();
     }
 
     public Long getTenantId() {
