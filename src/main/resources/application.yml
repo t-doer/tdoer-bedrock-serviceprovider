@@ -1,30 +1,33 @@
 spring:
   application:
-    name: tdoer-bedrock-serviceprovider
     admin:
       enabled: true
-#  rabbitmq:
-#    host: localhost
-#    port: 5672
-#    username: springcloud
-#    password: spring123
-#    virtual-host: /
-#  redis:
-#    host: 192.168.220.179
-#    port: 6379
-#    password: nhy67ujm
-#    timeout: 1000
-#    database: 0
-#  cache:
-#      type: redis
-
+    name: tdoer-bedrock-serviceprovider
+  datasource:
+    url: jdbc:mysql://10.8.2.119:3306/tdoer_core_data?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: "000000"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    name: tdoer_core_data
+  jackson:
+    date-format: yyyy/MM/dd HH:mm:ss
+    time-zone: GMT+8
+  redis:
+    host: 47.244.121.219
+    port: 6379
+    timeout: 1000
+    database: 1
+  cache:
+    type: redis
+  profiles:
+    active: default
 
 eureka:
   instance:
     # hostname: peer1
     # namespace: enreka
     appname: ${spring.application.name}
-    prefer-ip-address: false
+    prefer-ip-address: true
     instance-enabled-onit: false
     ## endpoints
     home-page-url-path: /
@@ -45,6 +48,7 @@ eureka:
       management:
         port: ${management.server.port}
         context-path: ${management.endpoints.web.base-path}
+
   client:
     ## basic
     enabled: true
@@ -52,12 +56,12 @@ eureka:
 #    region: cn-shanghai
 #    availability-zones:
 #      cn-shanghai: cn-shanghai-b,cn-shanghai-c,cn-shanghai-d
-    #service-url:
-    #  defaultZone: http://${eureka.peer.hostname}:${eureka.peer.port}/eureka/
+    service-url:
+      defaultZone: http://10.8.2.119:7020/eureka/
     #  cn-shanghai-b: http://${eureka.peer.hostname}:${eureka.peer.port}/eureka/
 
     ## register the instance
-    register-with-eureka: false
+    register-with-eureka: true
 
     ## replicate instance info Eureka server
     initial-instance-info-replication-interval-seconds: 40
@@ -67,7 +71,7 @@ eureka:
     on-demand-update-status-change: true
 
     ## fetch
-    fetch-registry: false
+    fetch-registry: true
     # fetch-remote-regions-registry: cn-shanghai
     prefer-same-zone-eureka: true
     filter-only-up-instances: true
@@ -88,6 +92,7 @@ eureka:
 
     ## log
     log-delta-diff: false
+
   server:
     enable-self-preservation: false
 
@@ -113,3 +118,6 @@ management:
         include: "*"
   server:
     port: ${mgmt-port:7081}
+
+mybatis:
+  mapper-locations: classpath:mybatis/*/*/*.xml
