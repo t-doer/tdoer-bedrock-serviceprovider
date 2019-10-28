@@ -13,12 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.tdoer.bedrock.serviceprovider.mapper.tenant;
+package com.tdoer.bedrock.serviceprovider.service.tenant;
 
-import com.tdoer.bedrock.serviceprovider.eo.tenant.TenantEO;
-import com.tdoer.springboot.mapper.IBaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import com.tdoer.bedrock.impl.definition.tenant.TenantProductDefinition;
+import com.tdoer.bedrock.serviceprovider.eo.tenant.TenantProductEO;
+import com.tdoer.springboot.service.IBaseService;
 
-@Mapper
-public interface TenantMapper extends IBaseMapper<Long, TenantEO> {
+import java.util.List;
+
+/**
+ * @author Leon Wang (ahbbhywmd@163.com)
+ * @Description
+ * @create 2019-10-28
+ */
+public interface TenantProductService extends IBaseService<Long, TenantProductEO> {
+    List<TenantProductEO> getTenantProducts(Long tenantId);
 }

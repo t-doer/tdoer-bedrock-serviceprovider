@@ -4,8 +4,8 @@
 
 
     <!--指定特定数据库的jdbc驱动jar包的位置-->
-    <classPathEntry location="/Users/jazz/.m2/repository/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar"/>
-    <classPathEntry location="/Users/jazz/.m2/repository/com/tdoer/tdoer-bedrock-impl/1.0.0-RELEASE/tdoer-bedrock-impl-1.0.0-RELEASE.jar"/>
+    <!--<classPathEntry location="/Users/jazz/.m2/repository/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar"/>-->
+    <!--<classPathEntry location="/Users/jazz/.m2/repository/com/tdoer/tdoer-bedrock-impl/1.0.0-RELEASE/tdoer-bedrock-impl-1.0.0-RELEASE.jar"/>-->
     <!--<classPathEntry location="/Users/wangmaodong/develop/software/repository/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar"/>-->
     <!--<classPathEntry location="/Users/wangmaodong/develop/software/repository/com/tdoer/tdoer-bedrock-impl/1.0.0-RELEASE/tdoer-bedrock-impl-1.0.0-RELEASE.jar"/>-->
 
