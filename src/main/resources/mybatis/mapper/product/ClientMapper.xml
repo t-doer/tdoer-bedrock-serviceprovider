@@ -179,4 +179,54 @@
       UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from fw_client
+  </select>
+  <select id="selectByExample" parameterType="com.tdoer.bedrock.serviceprovider.eo.product.ClientEO" resultMap="BaseResultMap">
+    select * from fw_client
+    <where>
+      <if test="id != null">
+        and ID = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="productId != null">
+        and PRODUCT_ID = #{productId,jdbcType=BIGINT}
+      </if>
+      <if test="name != null">
+        and NAME = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="code != null">
+        and CODE = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="category != null">
+        and CATEGORY = #{category,jdbcType=VARCHAR}
+      </if>
+      <if test="trusted != null">
+        and TRUSTED = #{trusted,jdbcType=CHAR}
+      </if>
+      <if test="scopes != null">
+        and SCOPES = #{scopes,jdbcType=VARCHAR}
+      </if>
+      <if test="roles != null">
+        and ROLES = #{roles,jdbcType=VARCHAR}
+      </if>
+      <if test="enabled != null">
+        and ENABLED = #{enabled,jdbcType=VARCHAR}
+      </if>
+      <if test="createdBy != null">
+        and CREATED_BY = #{createdBy,jdbcType=BIGINT}
+      </if>
+      <if test="createdAt != null">
+        and CREATED_AT = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updatedBy != null">
+        and UPDATED_BY = #{updatedBy,jdbcType=BIGINT}
+      </if>
+      <if test="updatedAt != null">
+        and UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="countByEntityPrimaryKey" parameterType="com.tdoer.bedrock.serviceprovider.eo.product.ClientEO" resultType="java.lang.Integer">
+    select count(*) from fw_client where id=#{id,jdbcType=BIGINT}
+  </select>
 </mapper>

@@ -4,17 +4,13 @@
 
 
     <!--指定特定数据库的jdbc驱动jar包的位置-->
-    <!--<classPathEntry location="/Users/jazz/.m2/repository/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar"/>-->
-    <!--<classPathEntry location="/Users/jazz/.m2/repository/com/tdoer/tdoer-bedrock-impl/1.0.0-RELEASE/tdoer-bedrock-impl-1.0.0-RELEASE.jar"/>-->
-    <classPathEntry location="/Users/wangmaodong/develop/software/repository/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar"/>
-    <classPathEntry location="/Users/wangmaodong/develop/software/repository/com/tdoer/tdoer-bedrock-impl/1.0.2-SNAPSHOT/tdoer-bedrock-impl-1.0.2-SNAPSHOT.jar"/>
+    <classPathEntry location="/Users/jazz/.m2/repository/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar"/>
+    <classPathEntry location="/Users/jazz/.m2/repository/com/tdoer/tdoer-bedrock-impl/1.0.2-SNAPSHOT/tdoer-bedrock-impl-1.0.2-SNAPSHOT.jar"/>
+    <!-- <classPathEntry location="/Users/wangmaodong/develop/software/repository/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar"/> -->
+    <!-- <classPathEntry location="/Users/wangmaodong/develop/software/repository/com/tdoer/tdoer-bedrock-impl/1.0.2-SNAPSHOT/tdoer-bedrock-impl-1.0.2-SNAPSHOT.jar"/> -->
 
     <context id="default" targetRuntime="MyBatis3">
-        <!--<plugin type="com.rongyi.framework.mybatis.generator.EntityCommentPlugin"></plugin>-->
-        <!-- 		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"></plugin>   -->
-        <!--         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin> -->
-        <!-- 		<plugin type="com.rongyi.framework.mybatis.plugins.OraclePaginationPlugin"/> -->
-        <!-- 		<plugin type="com.rongyi.framework.mybatis.plugins.EntityExtraMethodPlugin"/> -->
+        <plugin type="com.tdoer.springboot.plugins.MybatisGeneratorPlugin"></plugin>
 
         <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
         <commentGenerator>

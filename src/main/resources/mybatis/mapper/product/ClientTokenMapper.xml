@@ -180,4 +180,54 @@
       UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from fw_client_token
+  </select>
+  <select id="selectByExample" parameterType="com.tdoer.bedrock.serviceprovider.eo.product.ClientTokenEO" resultMap="BaseResultMap">
+    select * from fw_client_token
+    <where>
+      <if test="id != null">
+        and ID = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="clientId != null">
+        and CLIENT_ID = #{clientId,jdbcType=BIGINT}
+      </if>
+      <if test="grantTypes != null">
+        and GRANT_TYPES = #{grantTypes,jdbcType=VARCHAR}
+      </if>
+      <if test="autoApprovals != null">
+        and AUTO_APPROVALS = #{autoApprovals,jdbcType=VARCHAR}
+      </if>
+      <if test="webRedirectUri != null">
+        and WEB_REDIRECT_URI = #{webRedirectUri,jdbcType=VARCHAR}
+      </if>
+      <if test="accessTokenValidity != null">
+        and ACCESS_TOKEN_VALIDITY = #{accessTokenValidity,jdbcType=INTEGER}
+      </if>
+      <if test="refreshTokenValidity != null">
+        and REFRESH_TOKEN_VALIDITY = #{refreshTokenValidity,jdbcType=INTEGER}
+      </if>
+      <if test="sessionPolicy != null">
+        and SESSION_POLICY = #{sessionPolicy,jdbcType=VARCHAR}
+      </if>
+      <if test="tenantId != null">
+        and TENANT_ID = #{tenantId,jdbcType=BIGINT}
+      </if>
+      <if test="createdBy != null">
+        and CREATED_BY = #{createdBy,jdbcType=BIGINT}
+      </if>
+      <if test="createdAt != null">
+        and CREATED_AT = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updatedBy != null">
+        and UPDATED_BY = #{updatedBy,jdbcType=BIGINT}
+      </if>
+      <if test="updatedAt != null">
+        and UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="countByEntityPrimaryKey" parameterType="com.tdoer.bedrock.serviceprovider.eo.product.ClientTokenEO" resultType="java.lang.Integer">
+    select count(*) from fw_client_token where id=#{id,jdbcType=BIGINT}
+  </select>
 </mapper>

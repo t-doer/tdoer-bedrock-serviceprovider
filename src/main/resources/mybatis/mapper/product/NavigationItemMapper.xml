@@ -296,4 +296,84 @@
       UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from fw_client_navigation_item
+  </select>
+  <select id="selectByExample" parameterType="com.tdoer.bedrock.serviceprovider.eo.product.NavigationItemEO" resultMap="BaseResultMap">
+    select * from fw_client_navigation_item
+    <where>
+      <if test="id != null">
+        and ID = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="clientId != null">
+        and CLIENT_ID = #{clientId,jdbcType=BIGINT}
+      </if>
+      <if test="contextPath != null">
+        and CONTEXT_PATH = #{contextPath,jdbcType=VARCHAR}
+      </if>
+      <if test="tenantId != null">
+        and TENANT_ID = #{tenantId,jdbcType=BIGINT}
+      </if>
+      <if test="nodeId != null">
+        and NODE_ID = #{nodeId,jdbcType=VARCHAR}
+      </if>
+      <if test="parentId != null">
+        and PARENT_ID = #{parentId,jdbcType=VARCHAR}
+      </if>
+      <if test="sequence != null">
+        and SEQUENCE = #{sequence,jdbcType=TINYINT}
+      </if>
+      <if test="name != null">
+        and NAME = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null">
+        and TYPE = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="anchor != null">
+        and ANCHOR = #{anchor,jdbcType=VARCHAR}
+      </if>
+      <if test="pageId != null">
+        and PAGE_ID = #{pageId,jdbcType=BIGINT}
+      </if>
+      <if test="applicationId != null">
+        and APPLICATION_ID = #{applicationId,jdbcType=VARCHAR}
+      </if>
+      <if test="source != null">
+        and SOURCE = #{source,jdbcType=VARCHAR}
+      </if>
+      <if test="iconStyle != null">
+        and ICON_STYLE = #{iconStyle,jdbcType=VARCHAR}
+      </if>
+      <if test="imageUrl != null">
+        and IMAGE_URL = #{imageUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="protection != null">
+        and PROTECTION = #{protection,jdbcType=VARCHAR}
+      </if>
+      <if test="isPublic != null">
+        and IS_PUBLIC = #{isPublic,jdbcType=CHAR}
+      </if>
+      <if test="mode != null">
+        and MODE = #{mode,jdbcType=VARCHAR}
+      </if>
+      <if test="enabled != null">
+        and ENABLED = #{enabled,jdbcType=CHAR}
+      </if>
+      <if test="createdBy != null">
+        and CREATED_BY = #{createdBy,jdbcType=BIGINT}
+      </if>
+      <if test="createdAt != null">
+        and CREATED_AT = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updatedBy != null">
+        and UPDATED_BY = #{updatedBy,jdbcType=BIGINT}
+      </if>
+      <if test="updatedAt != null">
+        and UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="countByEntityPrimaryKey" parameterType="com.tdoer.bedrock.serviceprovider.eo.product.NavigationItemEO" resultType="java.lang.Integer">
+    select count(*) from fw_client_navigation_item where id=#{id,jdbcType=BIGINT}
+  </select>
 </mapper>

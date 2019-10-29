@@ -166,4 +166,51 @@
       UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from fw_client_context
+  </select>
+  <select id="selectByExample" parameterType="com.tdoer.bedrock.serviceprovider.eo.product.ClientContextEO" resultMap="BaseResultMap">
+    select * from fw_client_context
+    <where>
+      <if test="id != null">
+        and ID = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="clientId != null">
+        and CLIENT_ID = #{clientId,jdbcType=BIGINT}
+      </if>
+      <if test="contextPath != null">
+        and CONTEXT_PATH = #{contextPath,jdbcType=VARCHAR}
+      </if>
+      <if test="entryAppCode != null">
+        and ENTRY_APP_CODE = #{entryAppCode,jdbcType=VARCHAR}
+      </if>
+      <if test="entryNavItem != null">
+        and ENTRY_NAV_ITEM = #{entryNavItem,jdbcType=VARCHAR}
+      </if>
+      <if test="entryLanguage != null">
+        and ENTRY_LANGUAGE = #{entryLanguage,jdbcType=CHAR}
+      </if>
+      <if test="tenantId != null">
+        and TENANT_ID = #{tenantId,jdbcType=BIGINT}
+      </if>
+      <if test="enabled != null">
+        and ENABLED = #{enabled,jdbcType=CHAR}
+      </if>
+      <if test="createdBy != null">
+        and CREATED_BY = #{createdBy,jdbcType=BIGINT}
+      </if>
+      <if test="createdAt != null">
+        and CREATED_AT = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updatedBy != null">
+        and UPDATED_BY = #{updatedBy,jdbcType=BIGINT}
+      </if>
+      <if test="updatedAt != null">
+        and UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="countByEntityPrimaryKey" parameterType="com.tdoer.bedrock.serviceprovider.eo.product.ClientContextEO" resultType="java.lang.Integer">
+    select count(*) from fw_client_context where id=#{id,jdbcType=BIGINT}
+  </select>
 </mapper>

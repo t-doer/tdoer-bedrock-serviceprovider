@@ -155,4 +155,48 @@
       UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from fw_tenant_product
+  </select>
+  <select id="selectByExample" parameterType="com.tdoer.bedrock.serviceprovider.eo.tenant.TenantProductEO" resultMap="BaseResultMap">
+    select * from fw_tenant_product
+    <where>
+      <if test="id != null">
+        and ID = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="tenantId != null">
+        and TENANT_ID = #{tenantId,jdbcType=BIGINT}
+      </if>
+      <if test="productId != null">
+        and PRODUCT_ID = #{productId,jdbcType=BIGINT}
+      </if>
+      <if test="startDate != null">
+        and START_DATE = #{startDate,jdbcType=DATE}
+      </if>
+      <if test="endDate != null">
+        and END_DATE = #{endDate,jdbcType=DATE}
+      </if>
+      <if test="defaultLanguage != null">
+        and DEFAULT_LANGUAGE = #{defaultLanguage,jdbcType=CHAR}
+      </if>
+      <if test="enabled != null">
+        and ENABLED = #{enabled,jdbcType=CHAR}
+      </if>
+      <if test="createdBy != null">
+        and CREATED_BY = #{createdBy,jdbcType=BIGINT}
+      </if>
+      <if test="createdAt != null">
+        and CREATED_AT = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updatedBy != null">
+        and UPDATED_BY = #{updatedBy,jdbcType=BIGINT}
+      </if>
+      <if test="updatedAt != null">
+        and UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="countByEntityPrimaryKey" parameterType="com.tdoer.bedrock.serviceprovider.eo.tenant.TenantProductEO" resultType="java.lang.Integer">
+    select count(*) from fw_tenant_product where id=#{id,jdbcType=BIGINT}
+  </select>
 </mapper>

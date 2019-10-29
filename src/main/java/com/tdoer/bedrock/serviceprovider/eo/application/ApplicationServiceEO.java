@@ -1,9 +1,8 @@
 package com.tdoer.bedrock.serviceprovider.eo.application;
 
-import com.tdoer.bedrock.impl.definition.application.ApplicationServiceDefinition;
 import java.util.Date;
 
-public class ApplicationServiceEO extends ApplicationServiceDefinition {
+public class ApplicationServiceEO {
     private Long id;
 
     private Long applicationId;

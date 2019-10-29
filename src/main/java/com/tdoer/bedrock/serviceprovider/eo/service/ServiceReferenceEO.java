@@ -1,9 +1,8 @@
 package com.tdoer.bedrock.serviceprovider.eo.service;
 
-import com.tdoer.bedrock.impl.definition.service.ServiceReferenceDefinition;
 import java.util.Date;
 
-public class ServiceReferenceEO extends ServiceReferenceDefinition {
+public class ServiceReferenceEO {
     private Long id;
 
     private Long serviceId;

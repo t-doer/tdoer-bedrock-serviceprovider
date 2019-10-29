@@ -179,4 +179,54 @@
       UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from fw_service_method_ext
+  </select>
+  <select id="selectByExample" parameterType="com.tdoer.bedrock.serviceprovider.eo.service.ServiceMethodExtEO" resultMap="BaseResultMap">
+    select * from fw_service_method_ext
+    <where>
+      <if test="id != null">
+        and ID = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="methodId != null">
+        and METHOD_ID = #{methodId,jdbcType=BIGINT}
+      </if>
+      <if test="serviceId != null">
+        and SERVICE_ID = #{serviceId,jdbcType=BIGINT}
+      </if>
+      <if test="applicationId != null">
+        and APPLICATION_ID = #{applicationId,jdbcType=BIGINT}
+      </if>
+      <if test="productId != null">
+        and PRODUCT_ID = #{productId,jdbcType=BIGINT}
+      </if>
+      <if test="clientId != null">
+        and CLIENT_ID = #{clientId,jdbcType=BIGINT}
+      </if>
+      <if test="tenantId != null">
+        and TENANT_ID = #{tenantId,jdbcType=BIGINT}
+      </if>
+      <if test="contextPath != null">
+        and CONTEXT_PATH = #{contextPath,jdbcType=VARCHAR}
+      </if>
+      <if test="enabled != null">
+        and ENABLED = #{enabled,jdbcType=CHAR}
+      </if>
+      <if test="createdBy != null">
+        and CREATED_BY = #{createdBy,jdbcType=BIGINT}
+      </if>
+      <if test="createdAt != null">
+        and CREATED_AT = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updatedBy != null">
+        and UPDATED_BY = #{updatedBy,jdbcType=BIGINT}
+      </if>
+      <if test="updatedAt != null">
+        and UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="countByEntityPrimaryKey" parameterType="com.tdoer.bedrock.serviceprovider.eo.service.ServiceMethodExtEO" resultType="java.lang.Integer">
+    select count(*) from fw_service_method_ext where id=#{id,jdbcType=BIGINT}
+  </select>
 </mapper>

@@ -155,4 +155,48 @@
       UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from fw_service_method
+  </select>
+  <select id="selectByExample" parameterType="com.tdoer.bedrock.serviceprovider.eo.service.ServiceMethodEO" resultMap="BaseResultMap">
+    select * from fw_service_method
+    <where>
+      <if test="id != null">
+        and ID = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="name != null">
+        and NAME = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="method != null">
+        and METHOD = #{method,jdbcType=VARCHAR}
+      </if>
+      <if test="uri != null">
+        and URI = #{uri,jdbcType=VARCHAR}
+      </if>
+      <if test="serviceId != null">
+        and SERVICE_ID = #{serviceId,jdbcType=BIGINT}
+      </if>
+      <if test="enabled != null">
+        and ENABLED = #{enabled,jdbcType=CHAR}
+      </if>
+      <if test="customized != null">
+        and CUSTOMIZED = #{customized,jdbcType=CHAR}
+      </if>
+      <if test="createdBy != null">
+        and CREATED_BY = #{createdBy,jdbcType=BIGINT}
+      </if>
+      <if test="createdAt != null">
+        and CREATED_AT = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updatedBy != null">
+        and UPDATED_BY = #{updatedBy,jdbcType=BIGINT}
+      </if>
+      <if test="updatedAt != null">
+        and UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="countByEntityPrimaryKey" parameterType="com.tdoer.bedrock.serviceprovider.eo.service.ServiceMethodEO" resultType="java.lang.Integer">
+    select count(*) from fw_service_method where id=#{id,jdbcType=BIGINT}
+  </select>
 </mapper>
