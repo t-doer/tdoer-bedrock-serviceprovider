@@ -4,12 +4,6 @@ import com.tdoer.bedrock.impl.definition.product.ProductDefinition;
 import java.util.Date;
 
 public class ProductEO extends ProductDefinition {
-    private Long id;
-
-    private String code;
-
-    private String version;
-
     private String enabled;
 
     private Long createdBy;
@@ -19,30 +13,6 @@ public class ProductEO extends ProductDefinition {
     private Long updatedBy;
 
     private Date updatedAt;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code == null ? null : code.trim();
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version == null ? null : version.trim();
-    }
 
     public String getEnabled() {
         return enabled;

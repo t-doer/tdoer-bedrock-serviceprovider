@@ -6,10 +6,6 @@ import java.util.Date;
 public class ClientServiceEO extends ClientServiceDefinition {
     private Long id;
 
-    private Long clientId;
-
-    private Long serviceId;
-
     private Long createdBy;
 
     private Date createdAt;
@@ -24,22 +20,6 @@ public class ClientServiceEO extends ClientServiceDefinition {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
-    }
-
-    public Long getServiceId() {
-        return serviceId;
-    }
-
-    public void setServiceId(Long serviceId) {
-        this.serviceId = serviceId;
     }
 
     public Long getCreatedBy() {

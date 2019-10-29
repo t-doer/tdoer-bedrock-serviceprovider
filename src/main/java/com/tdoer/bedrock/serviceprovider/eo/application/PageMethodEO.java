@@ -4,9 +4,7 @@ import com.tdoer.bedrock.impl.definition.application.PageMethodDefinition;
 import java.util.Date;
 
 public class PageMethodEO extends PageMethodDefinition {
-    private Long applicationId;
-
-    private Long serviceId;
+    private Long id;
 
     private Long createdBy;
 
@@ -16,20 +14,12 @@ public class PageMethodEO extends PageMethodDefinition {
 
     private Date updatedAt;
 
-    public Long getApplicationId() {
-        return applicationId;
+    public Long getId() {
+        return id;
     }
 
-    public void setApplicationId(Long applicationId) {
-        this.applicationId = applicationId;
-    }
-
-    public Long getServiceId() {
-        return serviceId;
-    }
-
-    public void setServiceId(Long serviceId) {
-        this.serviceId = serviceId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getCreatedBy() {

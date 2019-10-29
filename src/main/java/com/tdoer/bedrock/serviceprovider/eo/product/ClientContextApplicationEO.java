@@ -1,8 +1,9 @@
 package com.tdoer.bedrock.serviceprovider.eo.product;
 
+import com.tdoer.bedrock.impl.definition.product.ContextApplicationDefinition;
 import java.util.Date;
 
-public class ClientContextApplicationEO {
+public class ClientContextApplicationEO extends ContextApplicationDefinition {
     private Long id;
 
     private Long clientId;

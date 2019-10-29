@@ -6,12 +6,6 @@ import java.util.Date;
 public class TenantClientEO extends TenantClientDefinition {
     private Long id;
 
-    private Long productId;
-
-    private Long clientId;
-
-    private String secret;
-
     private String enabled;
 
     private Long createdBy;
@@ -28,30 +22,6 @@ public class TenantClientEO extends TenantClientDefinition {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public Long getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
-    }
-
-    public String getSecret() {
-        return secret;
-    }
-
-    public void setSecret(String secret) {
-        this.secret = secret == null ? null : secret.trim();
     }
 
     public String getEnabled() {

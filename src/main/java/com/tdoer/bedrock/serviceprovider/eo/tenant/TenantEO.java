@@ -4,8 +4,6 @@ import com.tdoer.bedrock.impl.definition.tenant.TenantDefinition;
 import java.util.Date;
 
 public class TenantEO extends TenantDefinition {
-    private String guid;
-
     private String enabled;
 
     private Long createdBy;
@@ -15,14 +13,6 @@ public class TenantEO extends TenantDefinition {
     private Long updatedBy;
 
     private Date updatedAt;
-
-    public String getGuid() {
-        return guid;
-    }
-
-    public void setGuid(String guid) {
-        this.guid = guid == null ? null : guid.trim();
-    }
 
     public String getEnabled() {
         return enabled;

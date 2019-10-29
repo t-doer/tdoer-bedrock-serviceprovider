@@ -6,15 +6,7 @@ import java.util.Date;
 public class ContextPublicMethodEO extends ContextPublicMethodDefinition {
     private Long id;
 
-    private Long tenantId;
-
     private Long clientId;
-
-    private String contextPath;
-
-    private Long methodId;
-
-    private Long serviceId;
 
     private Long createdBy;
 
@@ -32,44 +24,12 @@ public class ContextPublicMethodEO extends ContextPublicMethodDefinition {
         this.id = id;
     }
 
-    public Long getTenantId() {
-        return tenantId;
-    }
-
-    public void setTenantId(Long tenantId) {
-        this.tenantId = tenantId;
-    }
-
     public Long getClientId() {
         return clientId;
     }
 
     public void setClientId(Long clientId) {
         this.clientId = clientId;
-    }
-
-    public String getContextPath() {
-        return contextPath;
-    }
-
-    public void setContextPath(String contextPath) {
-        this.contextPath = contextPath == null ? null : contextPath.trim();
-    }
-
-    public Long getMethodId() {
-        return methodId;
-    }
-
-    public void setMethodId(Long methodId) {
-        this.methodId = methodId;
-    }
-
-    public Long getServiceId() {
-        return serviceId;
-    }
-
-    public void setServiceId(Long serviceId) {
-        this.serviceId = serviceId;
     }
 
     public Long getCreatedBy() {

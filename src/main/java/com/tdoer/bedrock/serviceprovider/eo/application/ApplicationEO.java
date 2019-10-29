@@ -4,10 +4,6 @@ import com.tdoer.bedrock.impl.definition.application.ApplicationDefinition;
 import java.util.Date;
 
 public class ApplicationEO extends ApplicationDefinition {
-    private Long id;
-
-    private String code;
-
     private String enabled;
 
     private Long createdBy;
@@ -17,22 +13,6 @@ public class ApplicationEO extends ApplicationDefinition {
     private Long updatedBy;
 
     private Date updatedAt;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code == null ? null : code.trim();
-    }
 
     public String getEnabled() {
         return enabled;

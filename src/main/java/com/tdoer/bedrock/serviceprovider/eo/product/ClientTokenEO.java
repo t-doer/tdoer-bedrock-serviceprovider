@@ -6,12 +6,6 @@ import java.util.Date;
 public class ClientTokenEO extends ClientTokenDefinition {
     private Long id;
 
-    private Long clientId;
-
-    private String grantTypes;
-
-    private String autoApprovals;
-
     private String webRedirectUri;
 
     private String sessionPolicy;
@@ -30,30 +24,6 @@ public class ClientTokenEO extends ClientTokenDefinition {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
-    }
-
-    public String getGrantTypes() {
-        return grantTypes;
-    }
-
-    public void setGrantTypes(String grantTypes) {
-        this.grantTypes = grantTypes == null ? null : grantTypes.trim();
-    }
-
-    public String getAutoApprovals() {
-        return autoApprovals;
-    }
-
-    public void setAutoApprovals(String autoApprovals) {
-        this.autoApprovals = autoApprovals == null ? null : autoApprovals.trim();
     }
 
     public String getWebRedirectUri() {

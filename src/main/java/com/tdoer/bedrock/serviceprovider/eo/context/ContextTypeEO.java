@@ -4,14 +4,6 @@ import com.tdoer.bedrock.impl.definition.context.ContextTypeDefinition;
 import java.util.Date;
 
 public class ContextTypeEO extends ContextTypeDefinition {
-    private Long id;
-
-    private Long parentType;
-
-    private String contextPath;
-
-    private Long tenantId;
-
     private String enabled;
 
     private Long createdBy;
@@ -21,38 +13,6 @@ public class ContextTypeEO extends ContextTypeDefinition {
     private Long updatedBy;
 
     private Date updatedAt;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getParentType() {
-        return parentType;
-    }
-
-    public void setParentType(Long parentType) {
-        this.parentType = parentType;
-    }
-
-    public String getContextPath() {
-        return contextPath;
-    }
-
-    public void setContextPath(String contextPath) {
-        this.contextPath = contextPath == null ? null : contextPath.trim();
-    }
-
-    public Long getTenantId() {
-        return tenantId;
-    }
-
-    public void setTenantId(Long tenantId) {
-        this.tenantId = tenantId;
-    }
 
     public String getEnabled() {
         return enabled;

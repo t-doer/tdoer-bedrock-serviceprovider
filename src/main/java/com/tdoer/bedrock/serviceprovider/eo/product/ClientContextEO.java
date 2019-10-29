@@ -6,10 +6,6 @@ import java.util.Date;
 public class ClientContextEO extends ClientContextDefinition {
     private Long id;
 
-    private Long clientId;
-
-    private String entryAppCode;
-
     private String enabled;
 
     private Long createdBy;
@@ -26,22 +22,6 @@ public class ClientContextEO extends ClientContextDefinition {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
-    }
-
-    public String getEntryAppCode() {
-        return entryAppCode;
-    }
-
-    public void setEntryAppCode(String entryAppCode) {
-        this.entryAppCode = entryAppCode == null ? null : entryAppCode.trim();
     }
 
     public String getEnabled() {

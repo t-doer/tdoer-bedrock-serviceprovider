@@ -3,6 +3,7 @@
 <mapper namespace="com.tdoer.bedrock.serviceprovider.mapper.tenant.TenantClientMapper">
   <resultMap id="BaseResultMap" type="com.tdoer.bedrock.serviceprovider.eo.tenant.TenantClientEO">
     <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="GUID" jdbcType="VARCHAR" property="guid" />
     <result column="TENANT_ID" jdbcType="BIGINT" property="tenantId" />
     <result column="PRODUCT_ID" jdbcType="BIGINT" property="productId" />
     <result column="CLIENT_ID" jdbcType="BIGINT" property="clientId" />
@@ -15,7 +16,7 @@
     <result column="UPDATED_AT" jdbcType="TIMESTAMP" property="updatedAt" />
   </resultMap>
   <sql id="Base_Column_List">
-    ID, TENANT_ID, PRODUCT_ID, CLIENT_ID, SECRET, HOSTS, ENABLED, CREATED_BY, CREATED_AT, 
+    ID, GUID, TENANT_ID, PRODUCT_ID, CLIENT_ID, SECRET, HOSTS, ENABLED, CREATED_BY, CREATED_AT, 
     UPDATED_BY, UPDATED_AT
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -29,18 +30,21 @@
     where ID = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="com.tdoer.bedrock.serviceprovider.eo.tenant.TenantClientEO" useGeneratedKeys="true">
-    insert into fw_tenant_client (TENANT_ID, PRODUCT_ID, CLIENT_ID, 
-      SECRET, HOSTS, ENABLED, 
-      CREATED_BY, CREATED_AT, UPDATED_BY, 
-      UPDATED_AT)
-    values (#{tenantId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, #{clientId,jdbcType=BIGINT}, 
-      #{secret,jdbcType=VARCHAR}, #{hosts,jdbcType=VARCHAR}, #{enabled,jdbcType=CHAR}, 
-      #{createdBy,jdbcType=BIGINT}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=BIGINT}, 
-      #{updatedAt,jdbcType=TIMESTAMP})
+    insert into fw_tenant_client (GUID, TENANT_ID, PRODUCT_ID, 
+      CLIENT_ID, SECRET, HOSTS, 
+      ENABLED, CREATED_BY, CREATED_AT, 
+      UPDATED_BY, UPDATED_AT)
+    values (#{guid,jdbcType=VARCHAR}, #{tenantId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, 
+      #{clientId,jdbcType=BIGINT}, #{secret,jdbcType=VARCHAR}, #{hosts,jdbcType=VARCHAR}, 
+      #{enabled,jdbcType=CHAR}, #{createdBy,jdbcType=BIGINT}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=BIGINT}, #{updatedAt,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" keyColumn="ID" keyProperty="id" parameterType="com.tdoer.bedrock.serviceprovider.eo.tenant.TenantClientEO" useGeneratedKeys="true">
     insert into fw_tenant_client
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="guid != null">
+        GUID,
+      </if>
       <if test="tenantId != null">
         TENANT_ID,
       </if>
@@ -73,6 +77,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="guid != null">
+        #{guid,jdbcType=VARCHAR},
+      </if>
       <if test="tenantId != null">
         #{tenantId,jdbcType=BIGINT},
       </if>
@@ -108,6 +115,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.tdoer.bedrock.serviceprovider.eo.tenant.TenantClientEO">
     update fw_tenant_client
     <set>
+      <if test="guid != null">
+        GUID = #{guid,jdbcType=VARCHAR},
+      </if>
       <if test="tenantId != null">
         TENANT_ID = #{tenantId,jdbcType=BIGINT},
       </if>
@@ -143,7 +153,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.tdoer.bedrock.serviceprovider.eo.tenant.TenantClientEO">
     update fw_tenant_client
-    set TENANT_ID = #{tenantId,jdbcType=BIGINT},
+    set GUID = #{guid,jdbcType=VARCHAR},
+      TENANT_ID = #{tenantId,jdbcType=BIGINT},
       PRODUCT_ID = #{productId,jdbcType=BIGINT},
       CLIENT_ID = #{clientId,jdbcType=BIGINT},
       SECRET = #{secret,jdbcType=VARCHAR},

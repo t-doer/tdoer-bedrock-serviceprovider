@@ -6,10 +6,6 @@ import java.util.Date;
 public class ClientApplicationEO extends ClientApplicationDefinition {
     private Long id;
 
-    private Long clientId;
-
-    private Long applicationId;
-
     private String enabled;
 
     private Long createdBy;
@@ -26,22 +22,6 @@ public class ClientApplicationEO extends ClientApplicationDefinition {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
-    }
-
-    public Long getApplicationId() {
-        return applicationId;
-    }
-
-    public void setApplicationId(Long applicationId) {
-        this.applicationId = applicationId;
     }
 
     public String getEnabled() {

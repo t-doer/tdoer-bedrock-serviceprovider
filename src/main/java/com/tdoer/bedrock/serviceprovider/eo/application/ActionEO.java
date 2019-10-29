@@ -4,10 +4,6 @@ import com.tdoer.bedrock.impl.definition.application.ActionDefinition;
 import java.util.Date;
 
 public class ActionEO extends ActionDefinition {
-    private Long applicationId;
-
-    private String customized;
-
     private String enabled;
 
     private Long createdBy;
@@ -17,22 +13,6 @@ public class ActionEO extends ActionDefinition {
     private Long updatedBy;
 
     private Date updatedAt;
-
-    public Long getApplicationId() {
-        return applicationId;
-    }
-
-    public void setApplicationId(Long applicationId) {
-        this.applicationId = applicationId;
-    }
-
-    public String getCustomized() {
-        return customized;
-    }
-
-    public void setCustomized(String customized) {
-        this.customized = customized == null ? null : customized.trim();
-    }
 
     public String getEnabled() {
         return enabled;

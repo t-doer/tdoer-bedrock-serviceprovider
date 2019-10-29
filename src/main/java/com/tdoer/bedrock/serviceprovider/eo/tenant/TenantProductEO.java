@@ -6,10 +6,6 @@ import java.util.Date;
 public class TenantProductEO extends TenantProductDefinition {
     private Long id;
 
-    private Long productId;
-
-    private String defaultLanguage;
-
     private String enabled;
 
     private Long createdBy;
@@ -26,22 +22,6 @@ public class TenantProductEO extends TenantProductDefinition {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public String getDefaultLanguage() {
-        return defaultLanguage;
-    }
-
-    public void setDefaultLanguage(String defaultLanguage) {
-        this.defaultLanguage = defaultLanguage == null ? null : defaultLanguage.trim();
     }
 
     public String getEnabled() {
