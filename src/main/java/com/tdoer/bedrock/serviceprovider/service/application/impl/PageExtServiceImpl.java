@@ -16,12 +16,26 @@
 
 package com.tdoer.bedrock.serviceprovider.service.application.impl;
 
+import java.util.List;
+
 import com.tdoer.bedrock.serviceprovider.eo.application.PageExtEO;
 import com.tdoer.bedrock.serviceprovider.mapper.application.PageExtMapper;
 import com.tdoer.bedrock.serviceprovider.service.application.PageExtService;
 import com.tdoer.springboot.service.BaseServiceImpl;
+
 import org.springframework.stereotype.Service;
 
 @Service
 public class PageExtServiceImpl extends BaseServiceImpl<Long, PageExtEO, PageExtMapper> implements PageExtService {
+    @Override
+    public List<PageExtEO> findCustomziedPages(Long applicationId, Long productId, Long clientId, Long tenantId,
+            String contextPath) {
+        PageExtEO example = new PageExtEO();
+        example.setApplicationId(applicationId);
+        example.setProductId(productId);
+        example.setClientId(clientId);
+        example.setTenantId(tenantId);
+        example.setContextPath(contextPath);
+        return findListByExample(example);
+    }
 }

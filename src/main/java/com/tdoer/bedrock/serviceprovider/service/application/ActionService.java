@@ -16,8 +16,17 @@
 
 package com.tdoer.bedrock.serviceprovider.service.application;
 
+import java.util.List;
+
+import com.tdoer.bedrock.impl.definition.application.PageDefinition;
 import com.tdoer.bedrock.serviceprovider.eo.application.ActionEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface ActionService extends IBaseService<Long, ActionEO> {
+    List<ActionEO> findActionsByPage(PageDefinition page);
+    List<ActionEO> findActionsByPage(Long pageId);
+    List<ActionEO> findCustomizedActionsByPage(PageDefinition page);
+    List<ActionEO> findCustomizedActionsByPage(Long pageId);
+    List<ActionEO> findCommonActionsByPage(PageDefinition page);
+    List<ActionEO> findCommonActionsByPage(Long pageId);
 }

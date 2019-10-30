@@ -16,8 +16,11 @@
 
 package com.tdoer.bedrock.serviceprovider.service.application;
 
+import java.util.List;
+
 import com.tdoer.bedrock.serviceprovider.eo.application.ApplicationServiceExtEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface ApplicationServiceExtService extends IBaseService<Long, ApplicationServiceExtEO> {
+    List<ApplicationServiceExtEO> findCustomizedRefereeServices(Long applicationId, Long productId, Long clientId, Long tenantId, String contextPath);
 }

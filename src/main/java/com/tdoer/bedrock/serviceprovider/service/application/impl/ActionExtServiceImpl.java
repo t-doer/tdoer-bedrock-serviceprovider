@@ -16,6 +16,8 @@
 
 package com.tdoer.bedrock.serviceprovider.service.application.impl;
 
+import java.util.List;
+
 import com.tdoer.bedrock.serviceprovider.eo.application.ActionExtEO;
 import com.tdoer.bedrock.serviceprovider.mapper.application.ActionExtMapper;
 import com.tdoer.bedrock.serviceprovider.service.application.ActionExtService;
@@ -24,4 +26,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ActionExtServiceImpl extends BaseServiceImpl<Long, ActionExtEO, ActionExtMapper> implements ActionExtService {
+    @Override
+    public List<ActionExtEO> findCustomizedActions(Long pageId, Long productId, Long clientId, Long tenantId,
+            String contextPath) {
+        ActionExtEO example = new ActionExtEO();
+        example.setPageId(pageId);
+        example.setProductId(productId);
+        example.setClientId(clientId);
+        example.setTenantId(tenantId);
+        example.setContextPath(contextPath);
+        return findListByExample(example);
+    }
 }

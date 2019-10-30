@@ -16,8 +16,13 @@
 
 package com.tdoer.bedrock.serviceprovider.service.application;
 
+import java.util.List;
+
+import com.tdoer.bedrock.impl.definition.application.ActionDefinition;
 import com.tdoer.bedrock.serviceprovider.eo.application.ActionMethodEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface ActionMethodService extends IBaseService<Long, ActionMethodEO> {
+    List<ActionMethodEO> findActionMethodsByAction(ActionDefinition action);
+    List<ActionMethodEO> findActionMethodsByAction(Long actionId);
 }

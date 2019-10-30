@@ -16,8 +16,11 @@
 
 package com.tdoer.bedrock.serviceprovider.service.application;
 
+import java.util.List;
+
 import com.tdoer.bedrock.serviceprovider.eo.application.ActionExtEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface ActionExtService extends IBaseService<Long, ActionExtEO> {
+    List<ActionExtEO> findCustomizedActions(Long pageId, Long productId, Long clientId, Long tenantId, String contextPath);
 }

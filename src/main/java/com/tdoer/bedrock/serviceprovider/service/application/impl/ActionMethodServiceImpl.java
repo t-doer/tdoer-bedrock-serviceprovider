@@ -16,6 +16,9 @@
 
 package com.tdoer.bedrock.serviceprovider.service.application.impl;
 
+import java.util.List;
+
+import com.tdoer.bedrock.impl.definition.application.ActionDefinition;
 import com.tdoer.bedrock.serviceprovider.eo.application.ActionMethodEO;
 import com.tdoer.bedrock.serviceprovider.mapper.application.ActionMethodMapper;
 import com.tdoer.bedrock.serviceprovider.service.application.ActionMethodService;
@@ -24,4 +27,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ActionMethodServiceImpl extends BaseServiceImpl<Long, ActionMethodEO, ActionMethodMapper> implements ActionMethodService {
+
+    @Override
+    public List<ActionMethodEO> findActionMethodsByAction(ActionDefinition action) {
+        return findActionMethodsByAction(action.getId());
+    }
+
+    @Override
+    public List<ActionMethodEO> findActionMethodsByAction(Long actionId) {
+        ActionMethodEO example = new ActionMethodEO();
+        example.setActionId(actionId);
+        return findListByExample(example);
+    }
 }

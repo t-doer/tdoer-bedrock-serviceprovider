@@ -16,8 +16,12 @@
 
 package com.tdoer.bedrock.serviceprovider.service.application;
 
+import java.util.List;
+
 import com.tdoer.bedrock.serviceprovider.eo.application.PageExtEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface PageExtService extends IBaseService<Long, PageExtEO> {
+    List<PageExtEO> findCustomziedPages(Long applicationId, Long productId, Long clientId, Long tenantId,
+            String contextPath);
 }

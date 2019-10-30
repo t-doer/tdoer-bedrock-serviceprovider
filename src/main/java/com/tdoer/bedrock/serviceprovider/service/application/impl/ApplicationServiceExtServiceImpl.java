@@ -16,12 +16,27 @@
 
 package com.tdoer.bedrock.serviceprovider.service.application.impl;
 
+import java.util.List;
+
+import com.tdoer.bedrock.serviceprovider.eo.application.ApplicationServiceEO;
 import com.tdoer.bedrock.serviceprovider.eo.application.ApplicationServiceExtEO;
 import com.tdoer.bedrock.serviceprovider.mapper.application.ApplicationServiceExtMapper;
 import com.tdoer.bedrock.serviceprovider.service.application.ApplicationServiceExtService;
 import com.tdoer.springboot.service.BaseServiceImpl;
+
 import org.springframework.stereotype.Service;
 
 @Service
 public class ApplicationServiceExtServiceImpl extends BaseServiceImpl<Long, ApplicationServiceExtEO, ApplicationServiceExtMapper> implements ApplicationServiceExtService {
+    @Override
+    public List<ApplicationServiceExtEO> findCustomizedRefereeServices(Long applicationId, Long productId,
+            Long clientId, Long tenantId, String contextPath) {
+        ApplicationServiceExtEO example = new ApplicationServiceExtEO();
+        example.setApplicationId(applicationId);
+        example.setProductId(productId);
+        example.setClientId(clientId);
+        example.setTenantId(tenantId);
+        example.setContextPath(contextPath);
+        return findListByExample(example);
+    }
 }

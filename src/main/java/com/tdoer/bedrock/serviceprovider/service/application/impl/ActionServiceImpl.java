@@ -16,12 +16,54 @@
 
 package com.tdoer.bedrock.serviceprovider.service.application.impl;
 
+import java.util.List;
+
+import com.tdoer.bedrock.impl.definition.application.PageDefinition;
+import com.tdoer.bedrock.serviceprovider.constants.ServiceProviderEnums.CustomizeStatus;
 import com.tdoer.bedrock.serviceprovider.eo.application.ActionEO;
 import com.tdoer.bedrock.serviceprovider.mapper.application.ActionMapper;
 import com.tdoer.bedrock.serviceprovider.service.application.ActionService;
 import com.tdoer.springboot.service.BaseServiceImpl;
+
 import org.springframework.stereotype.Service;
 
 @Service
 public class ActionServiceImpl extends BaseServiceImpl<Long, ActionEO, ActionMapper> implements ActionService {
+    @Override
+    public List<ActionEO> findActionsByPage(PageDefinition page) {
+        return findActionsByPage(page.getId());
+    }
+
+    @Override
+    public List<ActionEO> findActionsByPage(Long pageId) {
+        ActionEO example = new ActionEO();
+        example.setPageId(pageId);
+        return findListByExample(example);
+    }
+
+    @Override
+    public List<ActionEO> findCustomizedActionsByPage(PageDefinition page) {
+        return findCustomizedActionsByPage(page.getId());
+    }
+
+    @Override
+    public List<ActionEO> findCustomizedActionsByPage(Long pageId) {
+        ActionEO example = new ActionEO();
+        example.setPageId(pageId);
+        example.setCustomized(CustomizeStatus.CUSTOMIZED.code());
+        return findListByExample(example);
+    }
+
+    @Override
+    public List<ActionEO> findCommonActionsByPage(PageDefinition page) {
+        return findCommonActionsByPage(page.getId());
+    }
+
+    @Override
+    public List<ActionEO> findCommonActionsByPage(Long pageId) {
+        ActionEO example = new ActionEO();
+        example.setPageId(pageId);
+        example.setCustomized(CustomizeStatus.COMMON.code());
+        return findListByExample(example);
+    }
 }

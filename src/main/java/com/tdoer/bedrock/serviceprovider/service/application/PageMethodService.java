@@ -16,8 +16,13 @@
 
 package com.tdoer.bedrock.serviceprovider.service.application;
 
+import java.util.List;
+
+import com.tdoer.bedrock.impl.definition.application.PageDefinition;
 import com.tdoer.bedrock.serviceprovider.eo.application.PageMethodEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface PageMethodService extends IBaseService<Long, PageMethodEO> {
+    List<PageMethodEO> findPageMethodsByPage(PageDefinition page);
+    List<PageMethodEO> findPageMethodsByPage(Long pageId);
 }

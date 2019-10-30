@@ -12,12 +12,22 @@
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
 * See the License for the specific language governing permissions and 
 * limitations under the License. 
-*/ 
+*/
 
 package com.tdoer.bedrock.serviceprovider.service.application;
 
+import java.util.List;
+
+import com.tdoer.bedrock.impl.definition.application.ApplicationDefinition;
 import com.tdoer.bedrock.serviceprovider.eo.application.PageEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface PageService extends IBaseService<Long, PageEO> {
+    List<PageEO> findPagesByApplication(ApplicationDefinition application);
+
+    List<PageEO> findPagesByApplication(Long applicationId);
+
+    List<PageEO> findCommonPagesByApplication(ApplicationDefinition application);
+
+    List<PageEO> findCommonPagesByApplication(Long applicationId);
 }

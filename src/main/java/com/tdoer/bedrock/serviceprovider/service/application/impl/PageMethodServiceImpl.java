@@ -16,6 +16,9 @@
 
 package com.tdoer.bedrock.serviceprovider.service.application.impl;
 
+import java.util.List;
+
+import com.tdoer.bedrock.impl.definition.application.PageDefinition;
 import com.tdoer.bedrock.serviceprovider.eo.application.PageMethodEO;
 import com.tdoer.bedrock.serviceprovider.mapper.application.PageMethodMapper;
 import com.tdoer.bedrock.serviceprovider.service.application.PageMethodService;
@@ -24,4 +27,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PageMethodServiceImpl extends BaseServiceImpl<Long, PageMethodEO, PageMethodMapper> implements PageMethodService {
+
+    @Override
+    public List<PageMethodEO> findPageMethodsByPage(PageDefinition page) {
+        return findPageMethodsByPage(page.getId());
+    }
+
+    @Override
+    public List<PageMethodEO> findPageMethodsByPage(Long pageId) {
+        PageMethodEO example = new PageMethodEO();
+        example.setPageId(pageId);
+        return findListByExample(example);
+    }
 }

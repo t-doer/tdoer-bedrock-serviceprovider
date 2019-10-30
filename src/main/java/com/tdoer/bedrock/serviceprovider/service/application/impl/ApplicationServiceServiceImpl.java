@@ -16,6 +16,10 @@
 
 package com.tdoer.bedrock.serviceprovider.service.application.impl;
 
+import java.util.List;
+
+import com.tdoer.bedrock.impl.definition.application.ApplicationDefinition;
+import com.tdoer.bedrock.serviceprovider.constants.ServiceProviderEnums.CustomizeStatus;
 import com.tdoer.bedrock.serviceprovider.eo.application.ApplicationServiceEO;
 import com.tdoer.bedrock.serviceprovider.mapper.application.ApplicationServiceMapper;
 import com.tdoer.bedrock.serviceprovider.service.application.ApplicationServiceService;
@@ -24,4 +28,29 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ApplicationServiceServiceImpl extends BaseServiceImpl<Long, ApplicationServiceEO, ApplicationServiceMapper> implements ApplicationServiceService {
+
+    @Override
+    public List<ApplicationServiceEO> findRefereeServicesByAppliction(ApplicationDefinition application) {
+        return findRefereeServicesByAppliction(application.getId());
+    }
+
+    @Override
+    public List<ApplicationServiceEO> findRefereeServicesByAppliction(Long applicationId) {
+        ApplicationServiceEO example = new ApplicationServiceEO();
+        example.setApplicationId(applicationId);
+        return findListByExample(example);
+    }
+
+    @Override
+    public List<ApplicationServiceEO> findCommonRefereeServicesByAppliction(ApplicationDefinition application) {
+        return findCommonRefereeServicesByAppliction(application.getId());
+    }
+
+    @Override
+    public List<ApplicationServiceEO> findCommonRefereeServicesByAppliction(Long applicationId) {
+        ApplicationServiceEO example = new ApplicationServiceEO();
+        example.setApplicationId(applicationId);
+        example.setCustomized(CustomizeStatus.COMMON.code());
+        return findListByExample(example);
+    }
 }

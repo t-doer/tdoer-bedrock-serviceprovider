@@ -16,8 +16,15 @@
 
 package com.tdoer.bedrock.serviceprovider.service.application;
 
+import java.util.List;
+
+import com.tdoer.bedrock.impl.definition.application.ApplicationDefinition;
 import com.tdoer.bedrock.serviceprovider.eo.application.ApplicationServiceEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface ApplicationServiceService extends IBaseService<Long, ApplicationServiceEO> {
+    List<ApplicationServiceEO> findRefereeServicesByAppliction(ApplicationDefinition application);
+    List<ApplicationServiceEO> findRefereeServicesByAppliction(Long applicationId);
+    List<ApplicationServiceEO> findCommonRefereeServicesByAppliction(ApplicationDefinition application);
+    List<ApplicationServiceEO> findCommonRefereeServicesByAppliction(Long applicationId);
 }
