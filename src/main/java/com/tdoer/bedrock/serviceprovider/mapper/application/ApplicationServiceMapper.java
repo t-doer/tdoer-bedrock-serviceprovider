@@ -20,6 +20,9 @@ import com.tdoer.bedrock.serviceprovider.eo.application.ApplicationServiceEO;
 import com.tdoer.springboot.mapper.IBaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface ApplicationServiceMapper extends IBaseMapper<Long, ApplicationServiceEO> {
+
 }

@@ -22,6 +22,21 @@ import com.tdoer.bedrock.serviceprovider.service.service.ServiceReferenceService
 import com.tdoer.springboot.service.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ServiceReferenceServiceImpl extends BaseServiceImpl<Long, ServiceReferenceEO, ServiceReferenceMapper> implements ServiceReferenceService {
+    @Override
+    public List<ServiceReferenceEO> getRefererServices(Long serviceId) {
+        ServiceReferenceEO example = new ServiceReferenceEO();
+        example.setServiceId(serviceId);
+        return findListByExample(example);
+    }
+
+    @Override
+    public List<ServiceReferenceEO> getRefereeServices(Long serviceId) {
+        ServiceReferenceEO example = new ServiceReferenceEO();
+        example.setRefereeId(serviceId);
+        return findListByExample(example);
+    }
 }

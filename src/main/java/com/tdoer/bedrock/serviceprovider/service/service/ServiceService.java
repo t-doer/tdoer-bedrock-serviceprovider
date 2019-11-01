@@ -20,4 +20,5 @@ import com.tdoer.bedrock.serviceprovider.eo.service.ServiceEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface ServiceService extends IBaseService<Long, ServiceEO> {
+    ServiceEO getByCode(String code);
 }

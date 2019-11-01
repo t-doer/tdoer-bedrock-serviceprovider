@@ -18,10 +18,19 @@ package com.tdoer.bedrock.serviceprovider.service.product.impl;
 
 import com.tdoer.bedrock.serviceprovider.eo.product.ClientServiceEO;
 import com.tdoer.bedrock.serviceprovider.mapper.product.ClientServiceMapper;
+import com.tdoer.bedrock.serviceprovider.service.product.ClientService;
 import com.tdoer.bedrock.serviceprovider.service.product.ClientServiceService;
 import com.tdoer.springboot.service.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClientServiceServiceImpl extends BaseServiceImpl<Long, ClientServiceEO, ClientServiceMapper> implements ClientServiceService {
+    @Override
+    public List<ClientServiceEO> getClientServicesByServiceId(Long serviceId) {
+        ClientServiceEO example = new ClientServiceEO();
+        example.setServiceId(serviceId);
+        return findListByExample(example);
+    }
 }

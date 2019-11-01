@@ -16,12 +16,31 @@
 
 package com.tdoer.bedrock.serviceprovider.service.service.impl;
 
+import com.github.pagehelper.Constant;
+import com.tdoer.bedrock.service.ServiceMethod;
+import com.tdoer.bedrock.serviceprovider.constants.ServiceProviderEnums;
 import com.tdoer.bedrock.serviceprovider.eo.service.ServiceMethodEO;
 import com.tdoer.bedrock.serviceprovider.mapper.service.ServiceMethodMapper;
 import com.tdoer.bedrock.serviceprovider.service.service.ServiceMethodService;
 import com.tdoer.springboot.service.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ServiceMethodServiceImpl extends BaseServiceImpl<Long, ServiceMethodEO, ServiceMethodMapper> implements ServiceMethodService {
+    @Override
+    public List<ServiceMethodEO> getServiceMethodsByServiceId(Long serviceId) {
+        ServiceMethodEO example = new ServiceMethodEO();
+        example.setServiceId(serviceId);
+        return findListByExample(example);
+    }
+
+    @Override
+    public List<ServiceMethodEO> getCommonServiceMethods(Long serviceId) {
+        ServiceMethodEO example = new ServiceMethodEO();
+        example.setServiceId(serviceId);
+        example.setCustomized(ServiceProviderEnums.CustomizeStatus.COMMON.code());
+        return findListByExample(example);
+    }
 }

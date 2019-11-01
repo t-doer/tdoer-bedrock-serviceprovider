@@ -20,6 +20,11 @@ import com.tdoer.bedrock.serviceprovider.eo.service.ServiceMethodEO;
 import com.tdoer.springboot.mapper.IBaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface ServiceMethodMapper extends IBaseMapper<Long, ServiceMethodEO> {
+    List<Long> getRefererClientIds(Long serviceId);
+
+    List<Long> getRefererApplicationIds(Long serviceId);
 }

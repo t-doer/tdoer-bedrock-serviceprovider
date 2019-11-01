@@ -19,5 +19,9 @@ package com.tdoer.bedrock.serviceprovider.service.product;
 import com.tdoer.bedrock.serviceprovider.eo.product.ClientServiceEO;
 import com.tdoer.springboot.service.IBaseService;
 
+import java.util.List;
+
 public interface ClientServiceService extends IBaseService<Long, ClientServiceEO> {
+
+    List<ClientServiceEO> getClientServicesByServiceId(Long serviceId);
 }

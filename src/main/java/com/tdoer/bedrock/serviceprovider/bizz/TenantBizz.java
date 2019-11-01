@@ -23,8 +23,6 @@ import com.tdoer.bedrock.serviceprovider.eo.tenant.TenantProductEO;
 import com.tdoer.bedrock.serviceprovider.service.tenant.TenantClientService;
 import com.tdoer.bedrock.serviceprovider.service.tenant.TenantProductService;
 import com.tdoer.bedrock.serviceprovider.service.tenant.TenantService;
-import com.tdoer.bedrock.tenant.Tenant;
-import com.tdoer.bedrock.tenant.TenantClient;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

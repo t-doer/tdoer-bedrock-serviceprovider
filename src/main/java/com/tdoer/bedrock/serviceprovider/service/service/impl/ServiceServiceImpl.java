@@ -24,4 +24,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceServiceImpl extends BaseServiceImpl<Long, ServiceEO, ServiceMapper> implements ServiceService {
+
+    @Override
+    public ServiceEO getByCode(String code) {
+        ServiceEO example = new ServiceEO();
+        example.setCode(code);
+        return getByExample(example);
+    }
 }

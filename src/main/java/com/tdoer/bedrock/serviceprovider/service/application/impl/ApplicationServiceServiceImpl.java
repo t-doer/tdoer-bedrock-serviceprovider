@@ -53,4 +53,11 @@ public class ApplicationServiceServiceImpl extends BaseServiceImpl<Long, Applica
         example.setCustomized(CustomizeStatus.COMMON.code());
         return findListByExample(example);
     }
+
+    @Override
+    public List<ApplicationServiceEO> getApplicationServicesByServiceId(Long serviceId) {
+        ApplicationServiceEO example = new ApplicationServiceEO();
+        example.setServiceId(serviceId);
+        return findListByExample(example);
+    }
 }

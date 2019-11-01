@@ -19,5 +19,10 @@ package com.tdoer.bedrock.serviceprovider.service.service;
 import com.tdoer.bedrock.serviceprovider.eo.service.ServiceReferenceEO;
 import com.tdoer.springboot.service.IBaseService;
 
+import java.util.List;
+
 public interface ServiceReferenceService extends IBaseService<Long, ServiceReferenceEO> {
+    List<ServiceReferenceEO> getRefererServices(Long serviceId);
+
+    List<ServiceReferenceEO> getRefereeServices(Long serviceId);
 }

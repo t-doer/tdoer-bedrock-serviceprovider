@@ -16,12 +16,27 @@
 
 package com.tdoer.bedrock.serviceprovider.service.service.impl;
 
+import com.tdoer.bedrock.service.ServiceMethod;
 import com.tdoer.bedrock.serviceprovider.eo.service.ServiceMethodExtEO;
 import com.tdoer.bedrock.serviceprovider.mapper.service.ServiceMethodExtMapper;
 import com.tdoer.bedrock.serviceprovider.service.service.ServiceMethodExtService;
 import com.tdoer.springboot.service.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ServiceMethodExtServiceImpl extends BaseServiceImpl<Long, ServiceMethodExtEO, ServiceMethodExtMapper> implements ServiceMethodExtService {
+    @Override
+    public List<ServiceMethodExtEO> getCustomizedServiceMethods(Long serviceId, Long applicationId, Long productId, Long clientId, Long tenantId, String contextPath) {
+        ServiceMethodExtEO example = new ServiceMethodExtEO();
+        example.setServiceId(serviceId);
+        example.setApplicationId(applicationId);
+        example.setProductId(productId);
+        example.setClientId(clientId);
+        example.setTenantId(tenantId);
+        example.setContextPath(contextPath);
+
+        return findListByExample(example);
+    }
 }

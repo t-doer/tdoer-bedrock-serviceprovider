@@ -19,5 +19,10 @@ package com.tdoer.bedrock.serviceprovider.service.service;
 import com.tdoer.bedrock.serviceprovider.eo.service.ServiceMethodEO;
 import com.tdoer.springboot.service.IBaseService;
 
+import java.util.List;
+
 public interface ServiceMethodService extends IBaseService<Long, ServiceMethodEO> {
+    List<ServiceMethodEO> getServiceMethodsByServiceId(Long ServiceId);
+
+    List<ServiceMethodEO> getCommonServiceMethods(Long serviceId);
 }

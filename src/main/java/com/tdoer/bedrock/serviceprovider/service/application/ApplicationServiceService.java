@@ -27,4 +27,5 @@ public interface ApplicationServiceService extends IBaseService<Long, Applicatio
     List<ApplicationServiceEO> findRefereeServicesByAppliction(Long applicationId);
     List<ApplicationServiceEO> findCommonRefereeServicesByAppliction(ApplicationDefinition application);
     List<ApplicationServiceEO> findCommonRefereeServicesByAppliction(Long applicationId);
+    List<ApplicationServiceEO> getApplicationServicesByServiceId(Long serviceId);
 }
