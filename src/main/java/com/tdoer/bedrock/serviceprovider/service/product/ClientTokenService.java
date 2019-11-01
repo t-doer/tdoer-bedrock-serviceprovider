@@ -20,4 +20,5 @@ import com.tdoer.bedrock.serviceprovider.eo.product.ClientTokenEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface ClientTokenService extends IBaseService<Long, ClientTokenEO> {
+    ClientTokenEO getClientToken(Long clientId, Long tenantId);
 }

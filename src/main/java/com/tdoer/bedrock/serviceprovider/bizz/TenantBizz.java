@@ -57,25 +57,21 @@ public class TenantBizz {
     }
 
     public List<TenantProductDefinition> getTenantProductDefinitions(Long tenantId) {
-        List<TenantProductEO> list = tenantProductService.getTenantProducts(tenantId);
-        List<TenantProductDefinition> ret = new ArrayList<>();
-        for(TenantProductEO eo : list) {
-            TenantProductDefinition tenantProductDefinition = new TenantProductDefinition();
-            BeanUtils.copyProperties(eo, tenantProductDefinition);
-            ret.add(tenantProductDefinition);
-        }
-        return ret;
+        List<TenantProductEO> tenantProducts = tenantProductService.getTenantProducts(tenantId);
+        List<TenantProductDefinition> tenantProductDefinitions = new ArrayList<>();
+        tenantProducts.forEach(tenantProduct -> {
+            tenantProductDefinitions.add(tenantProduct);
+        });
+        return tenantProductDefinitions;
     }
 
     public List<TenantClientDefinition> getTenantClientDefinitions(Long tenantId) {
-        List<TenantClientEO> list = tenantClientService.getTenantClients(tenantId);
-        List<TenantClientDefinition> ret = new ArrayList<>();
-        for (TenantClientEO eo : list) {
-            TenantClientDefinition clientDefinition = new TenantClientDefinition();
-            BeanUtils.copyProperties(eo, clientDefinition);
-            ret.add(clientDefinition);
-        }
-        return ret;
+        List<TenantClientEO> tenantClients = tenantClientService.getTenantClients(tenantId);
+        List<TenantClientDefinition> tenantClientDefinitions = new ArrayList<>();
+        tenantClients.forEach(tenantClient -> {
+            tenantClientDefinitions.add(tenantClient);
+        });
+        return tenantClientDefinitions;
     }
 
     public TenantClientDefinition getTenantClientDefinition(String host) {

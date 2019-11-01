@@ -20,4 +20,6 @@ import com.tdoer.bedrock.serviceprovider.eo.product.ProductEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface ProductService extends IBaseService<Long, ProductEO> {
+    ProductEO getByCode(String code);
+
 }

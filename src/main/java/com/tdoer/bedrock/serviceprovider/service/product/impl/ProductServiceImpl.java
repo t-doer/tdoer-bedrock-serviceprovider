@@ -24,4 +24,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProductServiceImpl extends BaseServiceImpl<Long, ProductEO, ProductMapper> implements ProductService {
+    @Override
+    public ProductEO getByCode(String code) {
+        ProductEO example = new ProductEO();
+        example.setCode(code);
+        return getByExample(example);
+    }
 }

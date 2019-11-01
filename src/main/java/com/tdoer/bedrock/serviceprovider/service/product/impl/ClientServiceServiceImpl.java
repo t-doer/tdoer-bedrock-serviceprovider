@@ -33,4 +33,12 @@ public class ClientServiceServiceImpl extends BaseServiceImpl<Long, ClientServic
         example.setServiceId(serviceId);
         return findListByExample(example);
     }
+
+    @Override
+    public List<ClientServiceEO> getClientServices(Long clientId, Long tenantId) {
+        ClientServiceEO example = new ClientServiceEO();
+        example.setClientId(clientId);
+        example.setTenantId(tenantId);
+        return findListByExample(example);
+    }
 }

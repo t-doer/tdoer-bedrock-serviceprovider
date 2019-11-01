@@ -22,6 +22,15 @@ import com.tdoer.bedrock.serviceprovider.service.product.ClientContextService;
 import com.tdoer.springboot.service.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClientContextServiceImpl extends BaseServiceImpl<Long, ClientContextEO, ClientContextMapper> implements ClientContextService {
+    @Override
+    public List<ClientContextEO> getClientContexts(Long clientId, Long tenantId) {
+        ClientContextEO example = new ClientContextEO();
+        example.setClientId(clientId);
+        example.setTenantId(tenantId);
+        return findListByExample(example);
+    }
 }

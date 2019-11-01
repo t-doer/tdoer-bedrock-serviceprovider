@@ -19,5 +19,8 @@ package com.tdoer.bedrock.serviceprovider.service.product;
 import com.tdoer.bedrock.serviceprovider.eo.product.ClientContextEO;
 import com.tdoer.springboot.service.IBaseService;
 
+import java.util.List;
+
 public interface ClientContextService extends IBaseService<Long, ClientContextEO> {
+    List<ClientContextEO> getClientContexts(Long clientId, Long tenantId);
 }

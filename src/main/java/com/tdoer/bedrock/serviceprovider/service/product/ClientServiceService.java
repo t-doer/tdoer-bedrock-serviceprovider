@@ -24,4 +24,6 @@ import java.util.List;
 public interface ClientServiceService extends IBaseService<Long, ClientServiceEO> {
 
     List<ClientServiceEO> getClientServicesByServiceId(Long serviceId);
+
+    List<ClientServiceEO> getClientServices(Long clientId, Long tenantId);
 }

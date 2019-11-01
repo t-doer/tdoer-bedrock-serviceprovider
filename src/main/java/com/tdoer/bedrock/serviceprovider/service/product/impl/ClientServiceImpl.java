@@ -22,6 +22,14 @@ import com.tdoer.bedrock.serviceprovider.service.product.ClientService;
 import com.tdoer.springboot.service.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClientServiceImpl extends BaseServiceImpl<Long, ClientEO, ClientMapper> implements ClientService {
+    @Override
+    public List<ClientEO> getClientsByProductId(Long productId) {
+        ClientEO example = new ClientEO();
+        example.setProductId(productId);
+        return findListByExample(example);
+    }
 }

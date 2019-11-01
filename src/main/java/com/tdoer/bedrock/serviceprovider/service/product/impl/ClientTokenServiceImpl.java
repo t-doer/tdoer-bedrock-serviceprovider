@@ -24,4 +24,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ClientTokenServiceImpl extends BaseServiceImpl<Long, ClientTokenEO, ClientTokenMapper> implements ClientTokenService {
+    @Override
+    public ClientTokenEO getClientToken(Long clientId, Long tenantId) {
+        ClientTokenEO example = new ClientTokenEO();
+        example.setClientId(clientId);
+        example.setTenantId(tenantId);
+        return getByExample(example);
+    }
 }

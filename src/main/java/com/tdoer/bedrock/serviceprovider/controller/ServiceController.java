@@ -22,6 +22,7 @@ import com.tdoer.springboot.rest.GenericResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -38,18 +39,18 @@ public class ServiceController {
 
     @GetMapping("/definition/byId/{serviceId}")
     GenericResponseData<ServiceDefinition> getServiceDefinitionById(
-            @PathVariable("serviceId") Long serviceId) {
+            @PathVariable("serviceId") @NotNull Long serviceId) {
         return GenericResponseData.ok(serviceBizz.getServiceDefinitionById(serviceId));
     }
 
-    @GetMapping("/definition/byCode/{serviceId}")
+    @GetMapping("/definition/byCode/{serviceCode}")
     GenericResponseData<ServiceDefinition> getServiceDefinitionByCode(
-            @PathVariable("serviceCode") String serviceCode) {
+            @PathVariable("serviceCode") @NotBlank String serviceCode) {
         return GenericResponseData.ok(serviceBizz.getServiceDefinitionByCode(serviceCode));
     }
     @GetMapping("/{serviceId}/methods")
     GenericResponseData<List<ServiceMethodDefinition>> getAllServiceMethodDefinitions(
-            @PathVariable("serviceId") Long serviceId) {
+            @PathVariable("serviceId") @NotNull Long serviceId) {
         return GenericResponseData.ok(serviceBizz.getAllServiceMethodDefinitions(serviceId));
     }
 
@@ -60,36 +61,40 @@ public class ServiceController {
             @RequestParam("productId") @NotNull Long productId,
             @RequestParam("clientId") @NotNull Long clientId,
             @RequestParam("tenantId") @NotNull Long tenantId,
-            @RequestParam("contextPath")  String contextPath) {
+            @RequestParam("contextPath") @NotBlank String contextPath) {
         return GenericResponseData.ok(serviceBizz.getCustomizedServiceMethodIds(serviceId, applicationId
                 , productId, clientId, tenantId, contextPath));
     }
 
-    @GetMapping("{serviceId}/commonMethodIds")
+    @GetMapping("/{serviceId}/commonMethodIds")
     GenericResponseData<List<Long>> getCommonServiceMethodIds(
             @PathVariable("serviceId") @NotNull Long serviceId) {
         return GenericResponseData.ok(serviceBizz.getCommonServiceMethodIds(serviceId));
     }
 
 
-    @GetMapping("{serviceId}/refererClientIds")
-    GenericResponseData<List<Long>> getRefererClientIds(@PathVariable("serviceId") @NotNull Long serviceId) {
+    @GetMapping("/{serviceId}/refererClientIds")
+    GenericResponseData<List<Long>> getRefererClientIds(
+            @PathVariable("serviceId") @NotNull Long serviceId) {
         return GenericResponseData.ok(serviceBizz.getRefererClientIds(serviceId));
     }
 
-    @GetMapping("{serviceId}/refererApplicationIds")
-    GenericResponseData<List<Long>> getRefererApplicationIds(@PathVariable("serviceId") @NotNull Long serviceId) {
+    @GetMapping("/{serviceId}/refererApplicationIds")
+    GenericResponseData<List<Long>> getRefererApplicationIds(
+            @PathVariable("serviceId") @NotNull Long serviceId) {
         return GenericResponseData.ok(serviceBizz.getRefererClientIds(serviceId));
     }
 
 
-    @GetMapping("{serviceId}/refererServiceIds")
-    GenericResponseData<List<Long>> getRefererServiceIds(@PathVariable("serviceId") @NotNull Long serviceId) {
+    @GetMapping("/{serviceId}/refererServiceIds")
+    GenericResponseData<List<Long>> getRefererServiceIds(
+            @PathVariable("serviceId") @NotNull Long serviceId) {
         return GenericResponseData.ok(serviceBizz.getRefererServiceIds(serviceId));
     }
 
-    @GetMapping("{serviceId}/refereeServiceIds")
-    GenericResponseData<List<Long>> getRefereeServiceIds(@PathVariable("serviceId") @NotNull Long serviceId) {
+    @GetMapping("/{serviceId}/refereeServiceIds")
+    GenericResponseData<List<Long>> getRefereeServiceIds(
+            @PathVariable("serviceId") @NotNull Long serviceId) {
         return GenericResponseData.ok(serviceBizz.getRefereeServiceIds(serviceId));
     }
 }
