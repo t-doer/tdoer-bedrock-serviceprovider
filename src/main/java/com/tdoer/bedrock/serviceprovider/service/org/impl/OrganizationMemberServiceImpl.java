@@ -14,14 +14,14 @@
 * limitations under the License. 
 */ 
 
-package com.tdoer.bedrock.serviceprovider.service.context.impl;
+package com.tdoer.bedrock.serviceprovider.service.org.impl;
 
-import com.tdoer.bedrock.serviceprovider.eo.context.ContextPublicMethodEO;
-import com.tdoer.bedrock.serviceprovider.mapper.context.ContextPubliMethodMapper;
-import com.tdoer.bedrock.serviceprovider.service.context.ContextPubliMethodService;
+import com.tdoer.bedrock.serviceprovider.eo.org.OrganizationMemberEO;
+import com.tdoer.bedrock.serviceprovider.mapper.org.OrganizationMemberMapper;
+import com.tdoer.bedrock.serviceprovider.service.org.OrganizationMemberService;
 import com.tdoer.springboot.service.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ContextPubliMethodServiceImpl extends BaseServiceImpl<Long, ContextPublicMethodEO, ContextPubliMethodMapper> implements ContextPubliMethodService {
+public class OrganizationMemberServiceImpl extends BaseServiceImpl<Long, OrganizationMemberEO, OrganizationMemberMapper> implements OrganizationMemberService {
 }

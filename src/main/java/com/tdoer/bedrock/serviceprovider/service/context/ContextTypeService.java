@@ -16,8 +16,11 @@
 
 package com.tdoer.bedrock.serviceprovider.service.context;
 
+import java.util.List;
+
 import com.tdoer.bedrock.serviceprovider.eo.context.ContextTypeEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface ContextTypeService extends IBaseService<Long, ContextTypeEO> {
+    public List<ContextTypeEO> findContextTypesByTenant(Long tenantId);
 }

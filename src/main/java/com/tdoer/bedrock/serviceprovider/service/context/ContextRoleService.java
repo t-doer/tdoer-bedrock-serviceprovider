@@ -16,8 +16,11 @@
 
 package com.tdoer.bedrock.serviceprovider.service.context;
 
+import java.util.List;
+
 import com.tdoer.bedrock.serviceprovider.eo.context.ContextRoleEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface ContextRoleService extends IBaseService<Long, ContextRoleEO> {
+    public List<ContextRoleEO> findRoles(Long tenantId, String contextPath);
 }

@@ -16,6 +16,8 @@
 
 package com.tdoer.bedrock.serviceprovider.service.context.impl;
 
+import java.util.List;
+
 import com.tdoer.bedrock.serviceprovider.eo.context.ContextTypeEO;
 import com.tdoer.bedrock.serviceprovider.mapper.context.ContextTypeMapper;
 import com.tdoer.bedrock.serviceprovider.service.context.ContextTypeService;
@@ -24,4 +26,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ContextTypeServiceImpl extends BaseServiceImpl<Long, ContextTypeEO, ContextTypeMapper> implements ContextTypeService {
+    @Override
+    public List<ContextTypeEO> findContextTypesByTenant(Long tenantId) {
+        ContextTypeEO example = new ContextTypeEO();
+        example.setTenantId(tenantId);
+        return findListByExample(example);
+    }
 }

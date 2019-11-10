@@ -14,13 +14,12 @@
 * limitations under the License. 
 */ 
 
-package com.tdoer.bedrock.serviceprovider.service.context;
+package com.tdoer.bedrock.serviceprovider.mapper.org;
 
-import java.util.List;
+import com.tdoer.bedrock.serviceprovider.eo.org.OrganizationEO;
+import com.tdoer.springboot.mapper.IBaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
-import com.tdoer.bedrock.serviceprovider.eo.context.ContextRoleMethodEO;
-import com.tdoer.springboot.service.IBaseService;
-
-public interface ContextRoleMethodService extends IBaseService<Long, ContextRoleMethodEO> {
-    public List<ContextRoleMethodEO> findMethods(Long clientId, Long tenantId, String contextPath, Long roleId);
+@Mapper
+public interface OrganizationMapper extends IBaseMapper<Long, OrganizationEO> {
 }

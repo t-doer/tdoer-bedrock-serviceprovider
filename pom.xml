@@ -44,6 +44,11 @@
         </dependency>
         <dependency>
             <groupId>com.tdoer</groupId>
+            <artifactId>tdoer-bedrock</artifactId>
+            <version>1.0.2-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.tdoer</groupId>
             <artifactId>tdoer-bedrock-impl</artifactId>
             <version>1.0.2-SNAPSHOT</version>
         </dependency>

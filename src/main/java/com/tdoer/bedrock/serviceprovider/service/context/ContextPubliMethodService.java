@@ -16,8 +16,11 @@
 
 package com.tdoer.bedrock.serviceprovider.service.context;
 
+import java.util.List;
+
 import com.tdoer.bedrock.serviceprovider.eo.context.ContextPublicMethodEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface ContextPubliMethodService extends IBaseService<Long, ContextPublicMethodEO> {
+    public List<ContextPublicMethodEO> findMethods(Long clientId, Long tenantId, String contextPath);
 }

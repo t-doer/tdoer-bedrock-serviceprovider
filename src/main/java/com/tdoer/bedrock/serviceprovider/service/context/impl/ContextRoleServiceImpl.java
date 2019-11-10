@@ -16,6 +16,8 @@
 
 package com.tdoer.bedrock.serviceprovider.service.context.impl;
 
+import java.util.List;
+
 import com.tdoer.bedrock.serviceprovider.eo.context.ContextRoleEO;
 import com.tdoer.bedrock.serviceprovider.mapper.context.ContextRoleMapper;
 import com.tdoer.bedrock.serviceprovider.service.context.ContextRoleService;
@@ -24,4 +26,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ContextRoleServiceImpl extends BaseServiceImpl<Long, ContextRoleEO, ContextRoleMapper> implements ContextRoleService {
+    @Override
+    public List<ContextRoleEO> findRoles(Long tenantId, String contextPath) {
+        ContextRoleEO example = new ContextRoleEO();
+        example.setTenantId(tenantId);
+        example.setContextPath(contextPath);
+        return findListByExample(example);
+    }
 }

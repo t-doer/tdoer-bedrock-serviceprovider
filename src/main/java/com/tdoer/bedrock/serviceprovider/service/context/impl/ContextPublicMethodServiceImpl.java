@@ -14,24 +14,24 @@
 * limitations under the License. 
 */ 
 
-package com.tdoer.bedrock.serviceprovider.service.product.impl;
+package com.tdoer.bedrock.serviceprovider.service.context.impl;
 
 import java.util.List;
 
-import com.tdoer.bedrock.serviceprovider.eo.product.ClientContextApplicationEO;
-import com.tdoer.bedrock.serviceprovider.mapper.product.ClientContextApplicationMapper;
-import com.tdoer.bedrock.serviceprovider.service.product.ClientContextApplicationService;
+import com.tdoer.bedrock.serviceprovider.eo.context.ContextPublicMethodEO;
+import com.tdoer.bedrock.serviceprovider.mapper.context.ContextPubliMethodMapper;
+import com.tdoer.bedrock.serviceprovider.service.context.ContextPubliMethodService;
 import com.tdoer.springboot.service.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ClientContextApplicationServiceImpl extends BaseServiceImpl<Long, ClientContextApplicationEO, ClientContextApplicationMapper> implements ClientContextApplicationService {
+public class ContextPublicMethodServiceImpl extends BaseServiceImpl<Long, ContextPublicMethodEO, ContextPubliMethodMapper> implements ContextPubliMethodService {
     @Override
-    public List<ClientContextApplicationEO> findApplications(Long clientId, Long tenantId, String contextPath) {
-        ClientContextApplicationEO example = new ClientContextApplicationEO();
+    public List<ContextPublicMethodEO> findMethods(Long clientId, Long tenantId, String contextPath) {
+        ContextPublicMethodEO example = new ContextPublicMethodEO();
         example.setClientId(clientId);
-        example.setTenantId(tenantId);
         example.setContextPath(contextPath);
+        example.setTenantId(tenantId);
         return findListByExample(example);
     }
 }

@@ -16,8 +16,11 @@
 
 package com.tdoer.bedrock.serviceprovider.service.product;
 
+import java.util.List;
+
 import com.tdoer.bedrock.serviceprovider.eo.product.ClientContextApplicationEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface ClientContextApplicationService extends IBaseService<Long, ClientContextApplicationEO> {
+    public List<ClientContextApplicationEO> findApplications(Long clientId, Long tenantId, String contextPath);
 }

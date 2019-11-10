@@ -14,13 +14,10 @@
 * limitations under the License. 
 */ 
 
-package com.tdoer.bedrock.serviceprovider.service.context;
+package com.tdoer.bedrock.serviceprovider.service.org;
 
-import java.util.List;
-
-import com.tdoer.bedrock.serviceprovider.eo.context.ContextRoleMethodEO;
+import com.tdoer.bedrock.serviceprovider.eo.org.OrganizationMemberEO;
 import com.tdoer.springboot.service.IBaseService;
 
-public interface ContextRoleMethodService extends IBaseService<Long, ContextRoleMethodEO> {
-    public List<ContextRoleMethodEO> findMethods(Long clientId, Long tenantId, String contextPath, Long roleId);
+public interface OrganizationMemberService extends IBaseService<Long, OrganizationMemberEO> {
 }
