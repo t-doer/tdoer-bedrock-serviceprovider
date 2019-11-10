@@ -20,4 +20,5 @@ import com.tdoer.bedrock.serviceprovider.eo.org.OrganizationMemberEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface OrganizationMemberService extends IBaseService<Long, OrganizationMemberEO> {
+    public OrganizationMemberEO getByOrgIdAndUserId(Long orgId, Long userId);
 }

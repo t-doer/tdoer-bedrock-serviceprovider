@@ -19,7 +19,7 @@ package com.tdoer.bedrock.serviceprovider.service.application.impl;
 import java.util.List;
 
 import com.tdoer.bedrock.impl.definition.application.ApplicationDefinition;
-import com.tdoer.bedrock.serviceprovider.constants.ServiceProviderEnums.CustomizeStatus;
+import com.tdoer.bedrock.serviceprovider.constants.ServiceProviderEnums.YesOrNoStatus;
 import com.tdoer.bedrock.serviceprovider.eo.application.ApplicationServiceEO;
 import com.tdoer.bedrock.serviceprovider.mapper.application.ApplicationServiceMapper;
 import com.tdoer.bedrock.serviceprovider.service.application.ApplicationServiceService;
@@ -50,7 +50,7 @@ public class ApplicationServiceServiceImpl extends BaseServiceImpl<Long, Applica
     public List<ApplicationServiceEO> findCommonRefereeServicesByAppliction(Long applicationId) {
         ApplicationServiceEO example = new ApplicationServiceEO();
         example.setApplicationId(applicationId);
-        example.setCustomized(CustomizeStatus.COMMON.code());
+        example.setCustomized(YesOrNoStatus.NO.code());
         return findListByExample(example);
     }
 

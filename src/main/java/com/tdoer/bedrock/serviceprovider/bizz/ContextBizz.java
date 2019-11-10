@@ -17,6 +17,7 @@
 package com.tdoer.bedrock.serviceprovider.bizz;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.tdoer.bedrock.context.ContextInstance;
@@ -32,13 +33,19 @@ import com.tdoer.bedrock.serviceprovider.eo.context.ContextRoleEO;
 import com.tdoer.bedrock.serviceprovider.eo.context.ContextRoleMethodEO;
 import com.tdoer.bedrock.serviceprovider.eo.context.ContextRoleResourceEO;
 import com.tdoer.bedrock.serviceprovider.eo.context.ContextTypeEO;
+import com.tdoer.bedrock.serviceprovider.eo.org.OrganizationEO;
+import com.tdoer.bedrock.serviceprovider.eo.org.OrganizationMemberEO;
 import com.tdoer.bedrock.serviceprovider.eo.product.ClientContextApplicationEO;
+import com.tdoer.bedrock.serviceprovider.eo.product.NavigationItemEO;
 import com.tdoer.bedrock.serviceprovider.service.context.ContextPubliMethodService;
 import com.tdoer.bedrock.serviceprovider.service.context.ContextRoleMethodService;
 import com.tdoer.bedrock.serviceprovider.service.context.ContextRoleResourceService;
 import com.tdoer.bedrock.serviceprovider.service.context.ContextRoleService;
 import com.tdoer.bedrock.serviceprovider.service.context.ContextTypeService;
+import com.tdoer.bedrock.serviceprovider.service.org.OrganizationMemberService;
+import com.tdoer.bedrock.serviceprovider.service.org.OrganizationService;
 import com.tdoer.bedrock.serviceprovider.service.product.ClientContextApplicationService;
+import com.tdoer.bedrock.serviceprovider.service.product.NavigationItemService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -63,6 +70,12 @@ public class ContextBizz {
     private ContextTypeService contextTypeService;
     @Autowired
     private ClientContextApplicationService clientContextApplicationService;
+    @Autowired
+    private OrganizationService organizationService;
+    @Autowired
+    private OrganizationMemberService organizationMemberService;
+    @Autowired
+    private NavigationItemService navigationItemService;
 
     public List<ContextTypeDefinition> getContextTypes(Long tenantId) {
         List<ContextTypeEO> contextTypes = contextTypeService.findContextTypesByTenant(tenantId);
@@ -94,20 +107,33 @@ public class ContextBizz {
     }
 
     public List<Long> getRoleIdsOfUserInContext(Long tenantId, String contextPath, Long userId) {
+        OrganizationEO organization = organizationService.getByContext(contextPath);
+        OrganizationMemberEO organizationMember = organizationMemberService.getByOrgIdAndUserId(organization.getId(), userId);
+        List<String> strRoleIds = Arrays.asList(organizationMember.getRoleIds().split(","));
+        List<Long> roleIds = new ArrayList<>();
+        strRoleIds.forEach((strRoleId) -> {
+            roleIds.add(Long.valueOf(strRoleId));
+        });
+        return roleIds;
     }
 
     public List<ContextPublicResourceDefinition> getContextPublicResources(
             Long clientId, Long tenantId,
             String contextPath) {
+        List<NavigationItemEO> publicItems = navigationItemService.findPublicItems(clientId, tenantId, contextPath);
         List<ContextPublicResourceDefinition> definitions = new ArrayList<>();
+        publicItems.forEach((publicItem) -> {
+            definitions.add(toContextPublicResourceDefinition(publicItem));
+        });
         return definitions;
     }
 
     public ContextInstance getContextInstance(Long tenantId, Long instanceId) {
-        
+        return null; 
     }
 
     public ContextInstance getContextInstance(Long tenantId, String guid) {
+        return null;
     }
 
     public List<ContextRoleResourceDefinition> getContextRoleResources(Long clientId, Long tenantId, String contextPath,
@@ -139,5 +165,15 @@ public class ContextBizz {
             definitions.add(application);
         });
         return definitions;
+    }
+
+    private ContextPublicResourceDefinition toContextPublicResourceDefinition(NavigationItemEO item) {
+        ContextPublicResourceDefinition definition = new ContextPublicResourceDefinition();
+        definition.setClientId(item.getClientId());
+        definition.setResourceId(item.getId());
+        definition.setResourceType(item.getType());
+        definition.setTenantId(item.getTenantId());
+        definition.setContextPath(item.getContextPath());
+        return definition;
     }
 }

@@ -24,4 +24,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrganizationServiceImpl extends BaseServiceImpl<Long, OrganizationEO, OrganizationMapper> implements OrganizationService {
+
+    @Override
+    public OrganizationEO getByContext(String contextPath) {
+        OrganizationEO example = new OrganizationEO();
+        example.setContextPath(contextPath);
+        return getByExample(example);
+    }
 }

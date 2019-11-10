@@ -16,6 +16,9 @@
 
 package com.tdoer.bedrock.serviceprovider.service.product.impl;
 
+import java.util.List;
+
+import com.tdoer.bedrock.serviceprovider.constants.ServiceProviderEnums.YesOrNoStatus;
 import com.tdoer.bedrock.serviceprovider.eo.product.NavigationItemEO;
 import com.tdoer.bedrock.serviceprovider.mapper.product.NavigationItemMapper;
 import com.tdoer.bedrock.serviceprovider.service.product.NavigationItemService;
@@ -24,4 +27,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class NavigationItemServiceImpl extends BaseServiceImpl<Long, NavigationItemEO, NavigationItemMapper> implements NavigationItemService {
+    @Override
+    public List<NavigationItemEO> findPublicItems(Long clientId, Long tenantId, String contextPath) {
+        NavigationItemEO example = new NavigationItemEO();
+        example.setClientId(clientId);
+        example.setTenantId(tenantId);
+        example.setContextPath(contextPath);
+        example.setIsPublic(YesOrNoStatus.YES.code());
+        return findListByExample(example);
+    }
 }

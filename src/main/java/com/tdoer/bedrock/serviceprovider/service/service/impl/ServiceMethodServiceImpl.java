@@ -40,7 +40,7 @@ public class ServiceMethodServiceImpl extends BaseServiceImpl<Long, ServiceMetho
     public List<ServiceMethodEO> getCommonServiceMethods(Long serviceId) {
         ServiceMethodEO example = new ServiceMethodEO();
         example.setServiceId(serviceId);
-        example.setCustomized(ServiceProviderEnums.CustomizeStatus.COMMON.code());
+        example.setCustomized(ServiceProviderEnums.YesOrNoStatus.NO.code());
         return findListByExample(example);
     }
 }

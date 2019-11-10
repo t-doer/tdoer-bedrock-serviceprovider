@@ -20,4 +20,5 @@ import com.tdoer.bedrock.serviceprovider.eo.org.OrganizationEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface OrganizationService extends IBaseService<Long, OrganizationEO> {
+    public OrganizationEO getByContext(String contextPath);
 }

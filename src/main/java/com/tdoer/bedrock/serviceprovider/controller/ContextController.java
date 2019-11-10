@@ -105,13 +105,13 @@ public class ContextController {
     public GenericResponseData<List<ContextPublicResourceDefinition>> getContextPublicResources(
             @RequestParam("clientId") @NonNull Long clientId, @RequestParam("tenantId") @NonNull Long tenantId,
             @PathVariable("contextPath") @NonNull String contextPath) {
-        return GenericResponseData.ok(contextBizz.getContextPublicResource(clientId, tenantId, contextPath));
+        return GenericResponseData.ok(contextBizz.getContextPublicResources(clientId, tenantId, contextPath));
     }
 
     @GetMapping("/{contextPath}/applications")
     public GenericResponseData<List<ContextApplicationDefinition>> getContextApplications(
             @RequestParam("clientId") @NonNull Long clientId, @RequestParam("tenantId") @NonNull Long tenantId,
             @PathVariable("contextPath") @NonNull String contextPath) {
-        return GenericResponseData.ok(contextBizz.getContextApplication(clientId, tenantId, contextPath));
+        return GenericResponseData.ok(contextBizz.getContextApplications(clientId, tenantId, contextPath));
     }
 }

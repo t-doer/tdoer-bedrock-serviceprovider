@@ -23,14 +23,14 @@ import com.tdoer.springboot.util.Resolvables.*;
  * @create 2019-10-30
  */
 public interface ServiceProviderEnums {
-    /** 定制状态 */
-    public enum CustomizeStatus implements StringResolvable {
-        CUSTOMIZED("Y", "定制"), COMMON("N", "通用");
+    /** 通用(是/否)状态 */
+    public enum YesOrNoStatus implements StringResolvable {
+        YES("Y", "定制"), NO("N", "通用");
 
         private String code;
         private String desc;
 
-        private CustomizeStatus(String code, String desc) {
+        private YesOrNoStatus(String code, String desc) {
             this.code = code;
             this.desc = desc;
         }

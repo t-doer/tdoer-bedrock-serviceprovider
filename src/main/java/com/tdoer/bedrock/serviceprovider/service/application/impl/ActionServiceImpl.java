@@ -19,7 +19,7 @@ package com.tdoer.bedrock.serviceprovider.service.application.impl;
 import java.util.List;
 
 import com.tdoer.bedrock.impl.definition.application.PageDefinition;
-import com.tdoer.bedrock.serviceprovider.constants.ServiceProviderEnums.CustomizeStatus;
+import com.tdoer.bedrock.serviceprovider.constants.ServiceProviderEnums.YesOrNoStatus;
 import com.tdoer.bedrock.serviceprovider.eo.application.ActionEO;
 import com.tdoer.bedrock.serviceprovider.mapper.application.ActionMapper;
 import com.tdoer.bedrock.serviceprovider.service.application.ActionService;
@@ -50,7 +50,7 @@ public class ActionServiceImpl extends BaseServiceImpl<Long, ActionEO, ActionMap
     public List<ActionEO> findCustomizedActionsByPage(Long pageId) {
         ActionEO example = new ActionEO();
         example.setPageId(pageId);
-        example.setCustomized(CustomizeStatus.CUSTOMIZED.code());
+        example.setCustomized(YesOrNoStatus.YES.code());
         return findListByExample(example);
     }
 
@@ -63,7 +63,7 @@ public class ActionServiceImpl extends BaseServiceImpl<Long, ActionEO, ActionMap
     public List<ActionEO> findCommonActionsByPage(Long pageId) {
         ActionEO example = new ActionEO();
         example.setPageId(pageId);
-        example.setCustomized(CustomizeStatus.COMMON.code());
+        example.setCustomized(YesOrNoStatus.NO.code());
         return findListByExample(example);
     }
 }

@@ -24,4 +24,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrganizationMemberServiceImpl extends BaseServiceImpl<Long, OrganizationMemberEO, OrganizationMemberMapper> implements OrganizationMemberService {
+    @Override
+    public OrganizationMemberEO getByOrgIdAndUserId(Long orgId, Long userId) {
+        OrganizationMemberEO example = new OrganizationMemberEO();
+        example.setOrgId(orgId);
+        example.setUserId(userId);
+        return getByExample(example);
+    }
 }

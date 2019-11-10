@@ -19,7 +19,7 @@ package com.tdoer.bedrock.serviceprovider.service.application.impl;
 import java.util.List;
 
 import com.tdoer.bedrock.impl.definition.application.ApplicationDefinition;
-import com.tdoer.bedrock.serviceprovider.constants.ServiceProviderEnums.CustomizeStatus;
+import com.tdoer.bedrock.serviceprovider.constants.ServiceProviderEnums.YesOrNoStatus;
 import com.tdoer.bedrock.serviceprovider.eo.application.PageEO;
 import com.tdoer.bedrock.serviceprovider.mapper.application.PageMapper;
 import com.tdoer.bedrock.serviceprovider.service.application.PageService;
@@ -50,7 +50,7 @@ public class PageServiceImpl extends BaseServiceImpl<Long, PageEO, PageMapper> i
     public List<PageEO> findCommonPagesByApplication(Long applicationId) {
         PageEO example = new PageEO();
         example.setApplicationId(applicationId);
-        example.setCustomized(CustomizeStatus.COMMON.code());
+        example.setCustomized(YesOrNoStatus.NO.code());
         return findListByExample(example);
     }
 

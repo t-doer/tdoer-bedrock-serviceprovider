@@ -16,8 +16,11 @@
 
 package com.tdoer.bedrock.serviceprovider.service.product;
 
+import java.util.List;
+
 import com.tdoer.bedrock.serviceprovider.eo.product.NavigationItemEO;
 import com.tdoer.springboot.service.IBaseService;
 
 public interface NavigationItemService extends IBaseService<Long, NavigationItemEO> {
+    public List<NavigationItemEO> findPublicItems(Long clientId, Long tenantId, String contextPath);
 }
