@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <jmxConfigurator/>
+
     <springProfile name="default,dev">
-        <appender name="STDOUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
             <encoder>
                 <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{logId}] %-5p [%file:%line] - %m%n</pattern>
             </encoder>
         </appender>
-        <logger name="com.bybon" level="DEFAULT" additivity="false">
-            <appender-ref ref="LOG_FILE" />
+        <logger name="com.tdoer.bedrock" level="debug" additivity="false">
+            <appender-ref ref="STDOUT" />
         </logger>
         <root level="INFO">
-            <appender-ref ref="LOG_FILE"/>
+            <appender-ref ref="STDOUT"/>
         </root>
     </springProfile>
     <springProfile name="sit,uat">
@@ -26,7 +27,7 @@
             </rollingPolicy>
         </appender>
         <!--<logger name="com.bybon" level="INFO" additivity="false">-->
-            <!--<appender-ref ref="LOG_FILE" />-->
+        <!--<appender-ref ref="LOG_FILE" />-->
         <!--</logger>-->
         <root level="INFO">
             <appender-ref ref="LOG_FILE"/>

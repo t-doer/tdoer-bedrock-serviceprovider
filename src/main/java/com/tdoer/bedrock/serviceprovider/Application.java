@@ -24,6 +24,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -35,7 +36,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication(exclude = {MongoAutoConfiguration.class})
 @EnableErrorHandler({ErrorStatusCodes.class, BedrockImplErrorCodes.class})
 @EnableEurekaClient
-@ComponentScan(basePackages={"com.tdoer.bedrock.serviceprovider","com.tdoer.springboot.log","com.tdoer.bedrock.impl","com.tdoer.service.interfaces"})
+@ComponentScan(basePackages={"com.tdoer.bedrock.serviceprovider","com.tdoer.springboot.log","com.tdoer.bedrock.impl","com.tdoer.delegate","com.tdoer.interfaces.config"})
+@EnableFeignClients(basePackages = {"com.tdoer.interfaces"})
 @EnableTransactionManagement
 @EnableManagementProtection
 public class Application {
