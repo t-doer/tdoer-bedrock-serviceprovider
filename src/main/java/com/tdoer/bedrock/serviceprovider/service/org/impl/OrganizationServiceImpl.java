@@ -31,4 +31,12 @@ public class OrganizationServiceImpl extends BaseServiceImpl<Long, OrganizationE
         example.setContextPath(contextPath);
         return getByExample(example);
     }
+
+    @Override
+    public OrganizationEO getByGuid(String guid, Long tenantId) {
+        OrganizationEO example = new OrganizationEO();
+        example.setGuid(guid);
+        example.setTenantId(tenantId);
+        return getByExample(example);
+    }
 }

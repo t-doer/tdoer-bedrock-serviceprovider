@@ -21,4 +21,5 @@ import com.tdoer.springboot.service.IBaseService;
 
 public interface OrganizationService extends IBaseService<Long, OrganizationEO> {
     public OrganizationEO getByContext(String contextPath);
+    public OrganizationEO getByGuid(String guid, Long tenantId);
 }

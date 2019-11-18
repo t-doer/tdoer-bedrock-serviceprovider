@@ -19,6 +19,7 @@ package com.tdoer.bedrock.serviceprovider.controller;
 import java.util.List;
 
 import com.tdoer.bedrock.impl.definition.context.ContextApplicationDefinition;
+import com.tdoer.bedrock.impl.definition.context.ContextInstanceDefinition;
 import com.tdoer.bedrock.impl.definition.context.ContextPublicMethodDefinition;
 import com.tdoer.bedrock.impl.definition.context.ContextPublicResourceDefinition;
 import com.tdoer.bedrock.impl.definition.context.ContextRoleDefinition;
@@ -26,7 +27,6 @@ import com.tdoer.bedrock.impl.definition.context.ContextRoleMethodDefinition;
 import com.tdoer.bedrock.impl.definition.context.ContextRoleResourceDefinition;
 import com.tdoer.bedrock.impl.definition.context.ContextTypeDefinition;
 import com.tdoer.bedrock.serviceprovider.bizz.ContextBizz;
-import com.tdoer.bedrock.context.ContextInstance;
 import com.tdoer.springboot.rest.GenericResponseData;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,9 +76,9 @@ public class ContextController {
     }
 
     @GetMapping("/context/{instanceId}")
-    public GenericResponseData<ContextInstance> getContextInstance(@RequestParam("tenantId") @NonNull Long tenantId,
-            @PathVariable("instanceId") @NonNull Long instanceId) {
-        return GenericResponseData.ok(contextBizz.getContextInstance(tenantId, instanceId));
+    public GenericResponseData<ContextInstanceDefinition> getContextInstance(@RequestParam("tenantId") @NonNull Long tenantId,
+            @RequestParam("contextType") @NonNull Long contextType, @PathVariable("instanceId") @NonNull Long instanceId) {
+        return GenericResponseData.ok(contextBizz.getContextInstance(tenantId, contextType, instanceId));
     }
 
     @GetMapping("/{contextPath}/role/{roleId}/resources")
@@ -89,7 +89,7 @@ public class ContextController {
     }
 
     @GetMapping("/context/byGuid/{guid}")
-    public GenericResponseData<ContextInstance> getContextInstance(@RequestParam("tenantId") @NonNull Long tenantId,
+    public GenericResponseData<ContextInstanceDefinition> getContextInstance(@RequestParam("tenantId") @NonNull Long tenantId,
             @PathVariable("guid") @NonNull String guid) {
         return GenericResponseData.ok(contextBizz.getContextInstance(tenantId, guid));
     }

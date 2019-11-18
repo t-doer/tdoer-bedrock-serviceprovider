@@ -22,6 +22,7 @@ import java.util.List;
 
 import com.tdoer.bedrock.context.ContextInstance;
 import com.tdoer.bedrock.impl.definition.context.ContextApplicationDefinition;
+import com.tdoer.bedrock.impl.definition.context.ContextInstanceDefinition;
 import com.tdoer.bedrock.impl.definition.context.ContextPublicMethodDefinition;
 import com.tdoer.bedrock.impl.definition.context.ContextPublicResourceDefinition;
 import com.tdoer.bedrock.impl.definition.context.ContextRoleDefinition;
@@ -47,6 +48,7 @@ import com.tdoer.bedrock.serviceprovider.service.org.OrganizationService;
 import com.tdoer.bedrock.serviceprovider.service.product.ClientContextApplicationService;
 import com.tdoer.bedrock.serviceprovider.service.product.NavigationItemService;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -88,7 +90,8 @@ public class ContextBizz {
 
     public List<ContextPublicMethodDefinition> getContextPublicMethods(Long clientId, Long tenantId,
             String contextPath) {
-        List<ContextPublicMethodEO> publicMethodEOs = contextPubliMethodService.findMethods(clientId, tenantId, contextPath);
+        List<ContextPublicMethodEO> publicMethodEOs = contextPubliMethodService.findMethods(clientId, tenantId,
+                contextPath);
         List<ContextPublicMethodDefinition> definitions = new ArrayList<>();
         publicMethodEOs.forEach((publicMethod) -> {
             definitions.add(publicMethod);
@@ -98,7 +101,8 @@ public class ContextBizz {
 
     public List<ContextRoleMethodDefinition> getContextRoleMethods(Long clientId, Long tenantId, String contextPath,
             Long roleId) {
-        List<ContextRoleMethodEO> roleMethodEOs = contextRoleMethodService.findMethods(clientId, tenantId, contextPath, roleId);
+        List<ContextRoleMethodEO> roleMethodEOs = contextRoleMethodService.findMethods(clientId, tenantId, contextPath,
+                roleId);
         List<ContextRoleMethodDefinition> definitions = new ArrayList<>();
         roleMethodEOs.forEach((roleMethod) -> {
             definitions.add(roleMethod);
@@ -108,7 +112,8 @@ public class ContextBizz {
 
     public List<Long> getRoleIdsOfUserInContext(Long tenantId, String contextPath, Long userId) {
         OrganizationEO organization = organizationService.getByContext(contextPath);
-        OrganizationMemberEO organizationMember = organizationMemberService.getByOrgIdAndUserId(organization.getId(), userId);
+        OrganizationMemberEO organizationMember = organizationMemberService.getByOrgIdAndUserId(organization.getId(),
+                userId);
         List<String> strRoleIds = Arrays.asList(organizationMember.getRoleIds().split(","));
         List<Long> roleIds = new ArrayList<>();
         strRoleIds.forEach((strRoleId) -> {
@@ -117,8 +122,7 @@ public class ContextBizz {
         return roleIds;
     }
 
-    public List<ContextPublicResourceDefinition> getContextPublicResources(
-            Long clientId, Long tenantId,
+    public List<ContextPublicResourceDefinition> getContextPublicResources(Long clientId, Long tenantId,
             String contextPath) {
         List<NavigationItemEO> publicItems = navigationItemService.findPublicItems(clientId, tenantId, contextPath);
         List<ContextPublicResourceDefinition> definitions = new ArrayList<>();
@@ -128,17 +132,35 @@ public class ContextBizz {
         return definitions;
     }
 
-    public ContextInstance getContextInstance(Long tenantId, Long instanceId) {
-        return null; 
+    public ContextInstanceDefinition getContextInstance(Long tenantId, Long contextType, Long instanceId) {
+        OrganizationEO organizationEO = organizationService.getById(instanceId);
+        ContextInstanceDefinition definition = new ContextInstanceDefinition();
+        if (organizationEO != null && organizationEO.getTenantId().equals(tenantId)
+                && organizationEO.getContextType().equals(contextType)) {
+            BeanUtils.copyProperties(organizationEO, definition);
+            ContextTypeDefinition contextTypeDefinition = contextTypeService.getById(organizationEO.getId());
+            definition.setContextType(contextTypeDefinition);
+        } else {
+        }
+        return definition;
     }
 
-    public ContextInstance getContextInstance(Long tenantId, String guid) {
-        return null;
+    public ContextInstanceDefinition getContextInstance(Long tenantId, String guid) {
+        OrganizationEO organizationEO = organizationService.getByGuid(guid, tenantId);
+        ContextInstanceDefinition definition = new ContextInstanceDefinition();
+        if (organizationEO != null) {
+            BeanUtils.copyProperties(organizationEO, definition);
+            ContextTypeDefinition contextTypeDefinition = contextTypeService.getById(organizationEO.getId());
+            definition.setContextType(contextTypeDefinition);
+        } else {
+        }
+        return definition;
     }
 
     public List<ContextRoleResourceDefinition> getContextRoleResources(Long clientId, Long tenantId, String contextPath,
             Long roleId) {
-        List<ContextRoleResourceEO> contextRoleResourceEOs = contextRoleResourceService.findRoleResources(clientId, tenantId, contextPath, roleId);
+        List<ContextRoleResourceEO> contextRoleResourceEOs = contextRoleResourceService.findRoleResources(clientId,
+                tenantId, contextPath, roleId);
         List<ContextRoleResourceDefinition> definitions = new ArrayList<>();
         contextRoleResourceEOs.forEach((resource) -> {
             definitions.add(resource);
@@ -146,8 +168,7 @@ public class ContextBizz {
         return definitions;
     }
 
-    public List<ContextRoleDefinition> getContextRoles(Long tenantId,
-            String contextPath) {
+    public List<ContextRoleDefinition> getContextRoles(Long tenantId, String contextPath) {
         List<ContextRoleEO> roleEOs = contextRoleService.findRoles(tenantId, contextPath);
         List<ContextRoleDefinition> definitions = new ArrayList<>();
         roleEOs.forEach((role) -> {
@@ -156,10 +177,9 @@ public class ContextBizz {
         return definitions;
     }
 
-    public List<ContextApplicationDefinition> getContextApplications(Long clientId,
-            Long tenantId,
-            String contextPath) {
-        List<ClientContextApplicationEO> contextApplicationEOs = clientContextApplicationService.findApplications(clientId, tenantId, contextPath);
+    public List<ContextApplicationDefinition> getContextApplications(Long clientId, Long tenantId, String contextPath) {
+        List<ClientContextApplicationEO> contextApplicationEOs = clientContextApplicationService
+                .findApplications(clientId, tenantId, contextPath);
         List<ContextApplicationDefinition> definitions = new ArrayList<>();
         contextApplicationEOs.forEach((application) -> {
             definitions.add(application);
