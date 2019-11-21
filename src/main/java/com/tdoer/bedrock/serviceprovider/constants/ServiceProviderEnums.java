@@ -25,7 +25,7 @@ import com.tdoer.springboot.util.Resolvables.*;
 public interface ServiceProviderEnums {
     /** 通用(是/否)状态 */
     public enum YesOrNoStatus implements StringResolvable {
-        YES("Y", "定制"), NO("N", "通用");
+        YES("Y", "是"), NO("N", "否");
 
         private String code;
         private String desc;
