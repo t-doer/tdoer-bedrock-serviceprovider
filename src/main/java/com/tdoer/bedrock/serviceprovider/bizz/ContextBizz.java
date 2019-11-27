@@ -16,41 +16,23 @@
 
 package com.tdoer.bedrock.serviceprovider.bizz;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import com.tdoer.bedrock.context.ContextInstance;
-import com.tdoer.bedrock.impl.definition.context.ContextApplicationDefinition;
-import com.tdoer.bedrock.impl.definition.context.ContextInstanceDefinition;
-import com.tdoer.bedrock.impl.definition.context.ContextPublicMethodDefinition;
-import com.tdoer.bedrock.impl.definition.context.ContextPublicResourceDefinition;
-import com.tdoer.bedrock.impl.definition.context.ContextRoleDefinition;
-import com.tdoer.bedrock.impl.definition.context.ContextRoleMethodDefinition;
-import com.tdoer.bedrock.impl.definition.context.ContextRoleResourceDefinition;
-import com.tdoer.bedrock.impl.definition.context.ContextTypeDefinition;
-import com.tdoer.bedrock.serviceprovider.eo.context.ContextPublicMethodEO;
-import com.tdoer.bedrock.serviceprovider.eo.context.ContextRoleEO;
-import com.tdoer.bedrock.serviceprovider.eo.context.ContextRoleMethodEO;
-import com.tdoer.bedrock.serviceprovider.eo.context.ContextRoleResourceEO;
-import com.tdoer.bedrock.serviceprovider.eo.context.ContextTypeEO;
+import com.tdoer.bedrock.impl.definition.context.*;
+import com.tdoer.bedrock.serviceprovider.eo.context.*;
 import com.tdoer.bedrock.serviceprovider.eo.org.OrganizationEO;
 import com.tdoer.bedrock.serviceprovider.eo.org.OrganizationMemberEO;
 import com.tdoer.bedrock.serviceprovider.eo.product.ClientContextApplicationEO;
 import com.tdoer.bedrock.serviceprovider.eo.product.NavigationItemEO;
-import com.tdoer.bedrock.serviceprovider.service.context.ContextPubliMethodService;
-import com.tdoer.bedrock.serviceprovider.service.context.ContextRoleMethodService;
-import com.tdoer.bedrock.serviceprovider.service.context.ContextRoleResourceService;
-import com.tdoer.bedrock.serviceprovider.service.context.ContextRoleService;
-import com.tdoer.bedrock.serviceprovider.service.context.ContextTypeService;
+import com.tdoer.bedrock.serviceprovider.service.context.*;
 import com.tdoer.bedrock.serviceprovider.service.org.OrganizationMemberService;
 import com.tdoer.bedrock.serviceprovider.service.org.OrganizationService;
 import com.tdoer.bedrock.serviceprovider.service.product.ClientContextApplicationService;
 import com.tdoer.bedrock.serviceprovider.service.product.NavigationItemService;
-
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @description ContextBizz
@@ -130,31 +112,6 @@ public class ContextBizz {
             definitions.add(toContextPublicResourceDefinition(publicItem));
         });
         return definitions;
-    }
-
-    public ContextInstanceDefinition getContextInstance(Long tenantId, Long contextType, Long instanceId) {
-        OrganizationEO organizationEO = organizationService.getById(instanceId);
-        ContextInstanceDefinition definition = new ContextInstanceDefinition();
-        if (organizationEO != null && organizationEO.getTenantId().equals(tenantId)
-                && organizationEO.getContextType().equals(contextType)) {
-            BeanUtils.copyProperties(organizationEO, definition);
-            ContextTypeDefinition contextTypeDefinition = contextTypeService.getById(organizationEO.getId());
-            definition.setContextType(contextTypeDefinition);
-        } else {
-        }
-        return definition;
-    }
-
-    public ContextInstanceDefinition getContextInstance(Long tenantId, String guid) {
-        OrganizationEO organizationEO = organizationService.getByGuid(guid, tenantId);
-        ContextInstanceDefinition definition = new ContextInstanceDefinition();
-        if (organizationEO != null) {
-            BeanUtils.copyProperties(organizationEO, definition);
-            ContextTypeDefinition contextTypeDefinition = contextTypeService.getById(organizationEO.getId());
-            definition.setContextType(contextTypeDefinition);
-        } else {
-        }
-        return definition;
     }
 
     public List<ContextRoleResourceDefinition> getContextRoleResources(Long clientId, Long tenantId, String contextPath,

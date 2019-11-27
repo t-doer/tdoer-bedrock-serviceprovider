@@ -16,26 +16,14 @@
 
 package com.tdoer.bedrock.serviceprovider.controller;
 
-import java.util.List;
-
-import com.tdoer.bedrock.impl.definition.context.ContextApplicationDefinition;
-import com.tdoer.bedrock.impl.definition.context.ContextInstanceDefinition;
-import com.tdoer.bedrock.impl.definition.context.ContextPublicMethodDefinition;
-import com.tdoer.bedrock.impl.definition.context.ContextPublicResourceDefinition;
-import com.tdoer.bedrock.impl.definition.context.ContextRoleDefinition;
-import com.tdoer.bedrock.impl.definition.context.ContextRoleMethodDefinition;
-import com.tdoer.bedrock.impl.definition.context.ContextRoleResourceDefinition;
-import com.tdoer.bedrock.impl.definition.context.ContextTypeDefinition;
+import com.tdoer.bedrock.impl.definition.context.*;
 import com.tdoer.bedrock.serviceprovider.bizz.ContextBizz;
 import com.tdoer.springboot.rest.GenericResponseData;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @description ContextController
@@ -75,23 +63,11 @@ public class ContextController {
         return GenericResponseData.ok(contextBizz.getRoleIdsOfUserInContext(tenantId, contextPath, userId));
     }
 
-    @GetMapping("/context/{instanceId}")
-    public GenericResponseData<ContextInstanceDefinition> getContextInstance(@RequestParam("tenantId") @NonNull Long tenantId,
-            @RequestParam("contextType") @NonNull Long contextType, @PathVariable("instanceId") @NonNull Long instanceId) {
-        return GenericResponseData.ok(contextBizz.getContextInstance(tenantId, contextType, instanceId));
-    }
-
     @GetMapping("/{contextPath}/role/{roleId}/resources")
     public GenericResponseData<List<ContextRoleResourceDefinition>> getContextRoleResources(
             @RequestParam("clientId") @NonNull Long clientId, @RequestParam("tenantId") @NonNull Long tenantId,
             @PathVariable("contextPath") @NonNull String contextPath, @PathVariable("roleId") @NonNull Long roleId) {
         return GenericResponseData.ok(contextBizz.getContextRoleResources(clientId, tenantId, contextPath, roleId));
-    }
-
-    @GetMapping("/context/byGuid/{guid}")
-    public GenericResponseData<ContextInstanceDefinition> getContextInstance(@RequestParam("tenantId") @NonNull Long tenantId,
-            @PathVariable("guid") @NonNull String guid) {
-        return GenericResponseData.ok(contextBizz.getContextInstance(tenantId, guid));
     }
 
     @GetMapping("/{contextPath}/roles")

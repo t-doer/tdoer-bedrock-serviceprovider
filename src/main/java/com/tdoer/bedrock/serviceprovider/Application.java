@@ -15,16 +15,15 @@
  */
 package com.tdoer.bedrock.serviceprovider;
 
-import com.tdoer.bedrock.impl.BedrockImplErrorCodes;
-import com.tdoer.security.autoconfigure.EnableManagementProtection;
+import com.tdoer.bedrock.autoconfigure.BedrockAutoConfiguration;
+import com.tdoer.bedrock.impl.autoconfigure.BedrockImplAutoConfiguration;
+import com.tdoer.security.configure.EnableManagementProtection;
 import com.tdoer.springboot.autoconfigure.EnableErrorHandler;
-
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -33,11 +32,17 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @create 2017-09-19
  */
 
-@SpringBootApplication(exclude = {MongoAutoConfiguration.class})
-@EnableErrorHandler({ErrorStatusCodes.class, BedrockImplErrorCodes.class})
+@SpringBootApplication(exclude = {
+        MongoAutoConfiguration.class,
+        BedrockAutoConfiguration.class,
+        BedrockImplAutoConfiguration.class
+})
+@EnableErrorHandler({ErrorStatusCodes.class})
 @EnableEurekaClient
-@ComponentScan(basePackages={"com.tdoer.bedrock.serviceprovider","com.tdoer.springboot.log","com.tdoer.bedrock.impl","com.tdoer.delegate","com.tdoer.interfaces.config"})
-@EnableFeignClients(basePackages = {"com.tdoer.interfaces"})
+@ComponentScan(basePackages={
+        "com.tdoer.bedrock.serviceprovider", // local components in the project
+        "com.tdoer.springboot.log" // request based log level configuration
+})
 @EnableTransactionManagement
 @EnableManagementProtection
 public class Application {
