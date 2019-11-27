@@ -34,8 +34,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication(exclude = {
         MongoAutoConfiguration.class,
-        BedrockAutoConfiguration.class,
-        BedrockImplAutoConfiguration.class
+        BedrockAutoConfiguration.class, // Must not load bedrock configuration
+        BedrockImplAutoConfiguration.class // Must not load bedrock implementation configuration
 })
 @EnableErrorHandler({ErrorStatusCodes.class})
 @EnableEurekaClient
